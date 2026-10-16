@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>03 常量与 #define · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块一 · 入门基础 / 第 03 课</div>
+      <h1>03 · 常量与 #define</h1>
+      <div class="meta-row">
+        <span class="tag">入门</span>
+        <span class="tag">25 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会用 #define 给常数起名字</li><li>理解宏只是「文本替换」</li><li>知道 const 的基本用法</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">为什么不要到处写裸数字</a> <a href="#sec-1">#define 的本质</a> <a href="#sec-2">const 常量</a> <a href="#sec-3">带参数的宏（了解即可）</a> <a href="#sec-4">易错点小结</a> <a href="#sec-5">单片机场景 · 宏定义：名称表达硬件含义</a></div>
+
+      <h2 id="sec-0">为什么不要到处写裸数字</h2>
+      <div class="prose">
+            <p>写 <code class="inline">pi = 3.14</code> 没问题，但代码里到处散落 3.14、7、100，半年后你自己都看不懂。更好的做法：</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+#define PI <span class="tok-n">3.14159</span>
+#define MAX_SCORE <span class="tok-n">100</span>
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">double</span> r = <span class="tok-n">2.0</span>;
+    printf(<span class="tok-s">&quot;面积 = %f\n&quot;</span>, PI * r * r);
+    printf(<span class="tok-s">&quot;满分 = %d\n&quot;</span>, MAX_SCORE);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">#define 的本质</h2>
+      <div class="prose">
+            <p>编译前，预处理器会把代码里的宏名<strong>原样换成</strong>后面的文本。它<strong>不是变量</strong>，不占运行时的「盒子」。</p>
+            <div class="warn-box"><div class="box-title">注意</div>
+              宏结尾<strong>没有分号</strong>。写成 <code class="inline">#define N 10;</code> 会把分号也替换进去，容易出怪错。</div>
+          </div>
+
+      <h2 id="sec-2">const 常量</h2>
+      <div class="prose"><p>需要「有类型、像变量一样用，但不能改」时用 const：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">const</span> <span class="tok-k">int</span> DAYS = <span class="tok-n">7</span>;
+<span class="tok-c">// DAYS = 8;  // 编译报错：不能修改 const</span>
+
+<span class="tok-k">const</span> <span class="tok-k">double</span> G = <span class="tok-n">9.8</span>;  <span class="tok-c">/* 重力加速度也可以是 const */</span></code></pre>
+</div>
+
+      <h2 id="sec-3">带参数的宏（了解即可）</h2>
+      <div class="prose"><p>宏还可以「带参数」，本质仍是文本替换。写时一定要多加括号，否则容易算错：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+#define SQUARE(x) ((x) * (x))
+#define MAX(a, b) (((a) &gt; (b)) ? (a) : (b))
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, SQUARE(<span class="tok-n">3</span>));      <span class="tok-c">/* 9 */</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, MAX(<span class="tok-n">10</span>, <span class="tok-n">20</span>));    <span class="tok-c">/* 20 */</span>
+    <span class="tok-c">/* 若写成 #define SQUARE(x) x*x，则 SQUARE(1+2) 会变成 1+2*1+2 = 5，不是 9 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">易错点小结</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">这三件事最容易忘</div>
+              <ul>
+                <li>宏名一般全大写，和变量区分开</li>
+                <li><code>#define</code> 行末<strong>不要</strong>加分号</li>
+                <li>宏没有类型检查，复杂逻辑更推荐写成函数</li>
+              </ul></div>
+          </div>
+
+      <h2 id="sec-5">单片机场景 · 宏定义：名称表达硬件含义</h2>
+      <div class="prose"><p>用名字代替魔法数字。数值常量和硬件别名要分清，宏本身不会创建变量。</p><p><strong>边界与验证：</strong>LED_ON = 0 只是假设低电平有效，须核对电路。原文 LED_PORT 对 P1 的别名仅适用于存在 P1 定义的目标环境。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#define</span> MAX_COUNT <span class="tok-n">100</span>
+#define LED_ON <span class="tok-n">0</span>
+#define LED_OFF <span class="tok-n">1</span>
+
+<span class="tok-k">unsigned</span> <span class="tok-k">int</span> cnt = <span class="tok-n">101</span>;
+<span class="tok-k">if</span> (cnt &gt; MAX_COUNT) {
+    cnt = <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l03" data-answer="1">
+          <p class="quiz-q">#define MAX 100 的作用是？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 创建一个名为 MAX 的整型变量</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> 编译前把 MAX 文本替换成 100</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 在内存里存 100</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 定义函数</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>#define 发生在编译之前的预处理阶段：编译器先把源文件里的 MAX 全部替换成文本 100，然后再编译。所以 MAX 不是变量，没有地址，也不占运行内存；你也不能对它取地址或修改。这和 const int 不同——const 是真正的只读变量，有类型、有存储。选宏还是 const：简单常数两者都行；需要类型安全或取地址时用 const。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>用 #define 定义圆周率和一周天数，写个小程序打印。</li><li>为什么宏名通常全大写？</li><li>把 MAX 定义成 100 后，写 if (score &gt; MAX) 有何好处？</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：综合题参考</strong></p>
+          <div class="code-wrap"><pre class="code"><code>#include &lt;stdio.h&gt;
+#define PI 3.1415926
+#define WEEK_DAYS 7
+
+int main(void)
+{
+    double r = 1.5;
+    printf("周长相关：一周有 %d 天\n", WEEK_DAYS);
+    printf("圆面积 = %f\n", PI * r * r);  /* 面积 πr² */
+    return 0;
+}</code></pre></div>
+          <p><strong>2：为什么全大写</strong>：约定。读代码时一眼能看出「这是宏，不是可改的变量」，也避免和局部变量重名混淆。</p>
+          <p><strong>3：宏的好处</strong>：满分若从 100 改成 120，只改一行 #define；全文里的 MAX_SCORE 都变了。若散落写死 100，就要全局搜索，还容易漏。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：运算符——程序会算数、会比较。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l03">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/02-l02.html"><span class="dir">上一章</span><span class="title">02 · 变量与数据类型</span></a>
+          <a class="pager-link next" href="../chapters/04-l04.html"><span class="dir">下一章</span><span class="title">04 · 运算符：算术、比较、逻辑</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

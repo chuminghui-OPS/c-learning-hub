@@ -1,0 +1,16 @@
+# Vercel CLI 本地关联信息（含项目/团队 ID，不该提交）
+.vercel
+
+# 操作系统杂物
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 编辑器杂物
+*.swp
+*.swo
+*~
+
+# 万一以后加了构建流程
+node_modules/
+npm-debug.log*

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>04 运算符：算术、比较、逻辑 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块一 · 入门基础 / 第 04 课</div>
+      <h1>04 · 运算符：算术、比较、逻辑</h1>
+      <div class="meta-row">
+        <span class="tag">入门</span>
+        <span class="tag">35 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会做加减乘除和取余</li><li>会写比较表达式（结果是真/假）</li><li>会用 &amp;&amp; || ! 组合条件</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">算术运算符</a> <a href="#sec-1">比较运算符</a> <a href="#sec-2">经典错误：= 和 ==</a> <a href="#sec-3">逻辑运算符与短路</a> <a href="#sec-4">赋值运算符（写代码会一直用）</a> <a href="#sec-5">运算优先级（够用记忆）</a> <a href="#sec-6">易错点汇总</a> <a href="#sec-7">单片机场景 · 运算符：条件与赋值</a></div>
+
+      <h2 id="sec-0">算术运算符</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>运算符</th><th>含义</th><th>例子</th><th>结果</th></tr></thead>
+              <tbody>
+                <tr><td><code>+ - *</code></td><td>加减乘</td><td><code>3+4*2</code></td><td>11（先乘除）</td></tr>
+                <tr><td><code>/</code></td><td>除</td><td><code>7/2</code></td><td><strong>3</strong>（整数除丢掉小数）</td></tr>
+                <tr><td><code>%</code></td><td>取余</td><td><code>7%2</code></td><td>1</td></tr>
+                <tr><td><code>++ --</code></td><td>加一减一</td><td><code>n++</code></td><td>n 变成 n+1</td></tr>
+              </tbody>
+            </table></div>
+            <div class="warn-box"><div class="box-title">新手最容易踩的坑</div>
+              <code class="inline">7 / 2</code> 在两边都是整数时结果是 <strong>3</strong>，不是 3.5。
+              要小数就写成 <code class="inline">7.0 / 2</code> 或强制转成 float。</div>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a = <span class="tok-n">7</span>, b = <span class="tok-n">2</span>;
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, a / b);     <span class="tok-c">// 3</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, a % b);     <span class="tok-c">// 1</span>
+    printf(<span class="tok-s">&quot;%f\n&quot;</span>, <span class="tok-n">7.0</span> / <span class="tok-n">2</span>);   <span class="tok-c">// 3.500000</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">比较运算符</h2>
+      <div class="prose">
+            <p>比较的结果只有两种：成立（真，C 里用 1 表示）或不成立（假，用 0）。所以比较表达式可以参与运算，也可以赋给 int：</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> a = <span class="tok-n">5</span>, b = <span class="tok-n">3</span>;
+<span class="tok-k">int</span> flag = (a &gt; b);   <span class="tok-c">/* flag = 1 */</span>
+printf(<span class="tok-s">&quot;%d\n&quot;</span>, a == b);  <span class="tok-c">/* 0 */</span></code></pre>
+</div>
+
+      <h2 id="sec-2">经典错误：= 和 ==</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">必须刻进脑子</div>
+              判断相等是 <code class="inline">==</code>，不是 <code class="inline">=</code>。
+              <code class="inline">=</code> 是赋值。写成 <code class="inline">if (x = 1)</code> 的真实语义是：
+              把 1 写进 x，然后判断 x 是否为真（1 为真）→ 条件几乎总是成立，而且 x 被你改成了 1。
+              这是 C 里最经典的逻辑 bug 之一。阅读时把常量写在左边可以帮忙防坑：
+              <code class="inline">if (1 == x)</code> 若误写成 <code class="inline">if (1 = x)</code> 会直接编译失败。</div>
+          </div>
+
+      <h2 id="sec-3">逻辑运算符与短路</h2>
+      <div class="prose">
+            <ul>
+              <li><code class="inline">&amp;&amp;</code> 与：两边都真才真</li>
+              <li><code class="inline">||</code> 或：有一边真就真</li>
+              <li><code class="inline">!</code> 非：真变假，假变真</li>
+            </ul>
+            <p><strong>短路求值</strong>：对 <code class="inline">A &amp;&amp; B</code>，若 A 已经为假，B <strong>不会执行</strong>；
+            对 <code class="inline">A || B</code>，若 A 已经为真，B 也不会执行。这可以写保护：</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> age = <span class="tok-n">20</span>;
+    <span class="tok-k">int</span> has_card = <span class="tok-n">1</span>;  <span class="tok-c">// 1 表示有</span>
+
+    <span class="tok-c">/* 先判断指针/下标合法，再解引用——利用短路避免崩溃 */</span>
+    <span class="tok-k">int</span> arr[<span class="tok-n">3</span>] = {<span class="tok-n">1</span>,<span class="tok-n">2</span>,<span class="tok-n">3</span>};
+    <span class="tok-k">int</span> i = <span class="tok-n">5</span>;
+    <span class="tok-k">if</span> (i &gt;= <span class="tok-n">0</span> &amp;&amp; i &lt; <span class="tok-n">3</span> &amp;&amp; arr[i] &gt; <span class="tok-n">0</span>)
+    {
+        <span class="tok-c">/* 能安全走到这里 */</span>
+    }
+
+    <span class="tok-k">if</span> (age &gt;= <span class="tok-n">18</span> &amp;&amp; has_card)
+    {
+        printf(<span class="tok-s">&quot;可以进入\n&quot;</span>);
+    }
+    <span class="tok-k">else</span>
+    {
+        printf(<span class="tok-s">&quot;不可以进入\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">赋值运算符（写代码会一直用）</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>写法</th><th>等价于</th><th>意思</th></tr></thead>
+              <tbody>
+                <tr><td><code>n += 3</code></td><td><code>n = n + 3</code></td><td>加 3 再存回</td></tr>
+                <tr><td><code>n -= 2</code></td><td><code>n = n - 2</code></td><td>减 2</td></tr>
+                <tr><td><code>n *= 2</code></td><td><code>n = n * 2</code></td><td>乘 2</td></tr>
+                <tr><td><code>n /= 2</code></td><td><code>n = n / 2</code></td><td>除 2</td></tr>
+                <tr><td><code>n %= 3</code></td><td><code>n = n % 3</code></td><td>模 3</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> sum = <span class="tok-n">0</span>;
+sum += <span class="tok-n">10</span>;   <span class="tok-c">/* 累加，极常用 */</span>
+sum += <span class="tok-n">5</span>;    <span class="tok-c">/* 15 */</span></code></pre>
+</div>
+
+      <h2 id="sec-5">运算优先级（够用记忆）</h2>
+      <div class="prose">
+            <p>从高到低大致是：</p>
+            <ol>
+              <li><code class="inline">()</code> 括号</li>
+              <li><code class="inline">! ++ --</code> 等一元运算</li>
+              <li><code class="inline">* / %</code></li>
+              <li><code class="inline">+ -</code></li>
+              <li>比较 <code class="inline">&lt; &gt; == ...</code></li>
+              <li><code class="inline">&amp;&amp;</code></li>
+              <li><code class="inline">||</code></li>
+              <li><code class="inline">=</code> 赋值</li>
+            </ol>
+            <p>拿不准就加括号，代码更清楚，也不会算错。</p>
+          </div>
+
+      <h2 id="sec-6">易错点汇总</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">本课四颗雷</div>
+              <ul>
+                <li><code class="inline">7/2</code> 结果是 3，不是 3.5</li>
+                <li><code class="inline">==</code> 比较，<code class="inline">=</code> 赋值</li>
+                <li><code class="inline">%</code> 两边必须是整数</li>
+                <li>浮点比较不要写 <code class="inline">f == 0.3</code>，有误差；可比较差值是否很小</li>
+              </ul>
+            </div>
+          </div>
+
+      <h2 id="sec-7">单片机场景 · 运算符：条件与赋值</h2>
+      <div class="prose"><p>算术得到数值，比较与逻辑运算得到真假。先判断条件，再执行赋值。</p><p><strong>边界与验证：</strong>c 先是 8，条件成立后变成 2。== 比较，= 赋值；& 不等于逻辑与 &&。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> a = <span class="tok-n">5</span>, b = <span class="tok-n">3</span>;
+<span class="tok-k">int</span> c = a + b;
+<span class="tok-k">if</span> (a &gt; b &amp;&amp; b &gt; <span class="tok-n">0</span>) {
+    c = a - b;
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l04" data-answer="1">
+          <p class="quiz-q">表达式 9 / 2 的值是？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 4.5</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> 4</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 5</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 1</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>运算规则：先看操作数类型。9 和 2 都是 int，所以走整数除法——只保留商的整数部分，余数直接丢掉（不是四舍五入）。9÷2=4.5，丢掉 0.5 得到 4。若写 9.0/2 或 (double)9/2，就会提升为浮点除法，得到 4.5。取余用 %：9%2=1。记法：整数 / 整数 = 整数；只要有一边是浮点，结果才是浮点。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>计算并写出结果：10/3、10%3、2*3+1、!(5&gt;3)。</li><li>成绩 score 及格线 60，写出「不及格」的 if 条件。</li><li>找出 bug：if (score = 100) printf(&quot;满分&quot;);</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：逐步算</strong></p>
+          <ul>
+            <li>10/3：整数除 → 3（余 1 丢掉）</li>
+            <li>10%3：余数 → 1</li>
+            <li>2*3+1：先乘 → 7</li>
+            <li>!(5&gt;3)：5&gt;3 为真(1)，!1 → 0</li>
+          </ul>
+          <p><strong>2：不及格条件</strong></p>
+          <div class="code-wrap"><pre class="code"><code>if (score &lt; 60)
+{
+    printf("不及格\n");
+}</code></pre></div>
+          <p><strong>3：bug 分析</strong>：<code>if (score = 100)</code> 把 100 写入 score，表达式值为 100（真），永远打印「满分」，且 score 被改成 100。正确写法是 <code>if (score == 100)</code>。很多编译器会警告 “suggest parentheses around assignment used as truth value”。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：让程序「做选择」——if / else。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l04">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/03-l03.html"><span class="dir">上一章</span><span class="title">03 · 常量与 #define</span></a>
+          <a class="pager-link next" href="../chapters/05-l05.html"><span class="dir">下一章</span><span class="title">05 · 位运算入门（能读懂就行）</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

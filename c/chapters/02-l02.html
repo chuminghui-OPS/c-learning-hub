@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>02 变量与数据类型 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块一 · 入门基础 / 第 02 课</div>
+      <h1>02 · 变量与数据类型</h1>
+      <div class="meta-row">
+        <span class="tag">入门</span>
+        <span class="tag">30 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会声明并使用变量</li><li>分清 int、char、float 的用途</li><li>知道类型决定「占多大、能装什么」</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">变量 = 有名字的盒子</a> <a href="#sec-1">常用类型一览</a> <a href="#sec-2">命名规则（必须记）</a> <a href="#sec-3">赋值与修改</a> <a href="#sec-4">未初始化就很危险</a> <a href="#sec-5">sizeof：看类型占几字节</a> <a href="#sec-6">类型决定能装什么</a> <a href="#sec-7">单片机场景 · 变量与常量：计数器</a></div>
+
+      <h2 id="sec-0">变量 = 有名字的盒子</h2>
+      <div class="prose">
+            <p>程序要处理数据，就得先有地方存。<strong>变量</strong>就是带名字的盒子。声明时要说明类型，类型回答两个问题：</p>
+            <ul>
+              <li><strong>占多大空间</strong>：int 常见 4 字节，char 1 字节……</li>
+              <li><strong>怎么解释里面的比特</strong>：同样是 0100…，当 int 读是整数，当 float 读是小数</li>
+            </ul>
+            <p>所以「先声明类型，再赋值」不是语法洁癖，而是让编译器知道该分配多少字节、该用哪套算术规则。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> age = <span class="tok-n">18</span>;           <span class="tok-c">// 整数：年龄、个数</span>
+    <span class="tok-k">float</span> score = <span class="tok-n">92.5f</span>;    <span class="tok-c">// 小数：分数（f 表示单精度字面量）</span>
+    <span class="tok-k">char</span> grade = <span class="tok-s">'A'</span>;       <span class="tok-c">// 单个字符，用单引号</span>
+
+    printf(<span class="tok-s">&quot;年龄=%d\n&quot;</span>, age);     <span class="tok-c">/* %d 对应 int */</span>
+    printf(<span class="tok-s">&quot;分数=%.1f\n&quot;</span>, score); <span class="tok-c">/* %.1f 保留 1 位小数 */</span>
+    printf(<span class="tok-s">&quot;等级=%c\n&quot;</span>, grade);   <span class="tok-c">/* %c 对应 char */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">常用类型一览</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>类型</th><th>放什么</th><th>例子</th><th>printf 占位符</th></tr></thead>
+              <tbody>
+                <tr><td><code>int</code></td><td>整数</td><td><code>42</code>、<code>-7</code></td><td><code>%d</code></td></tr>
+                <tr><td><code>float</code></td><td>单精度小数</td><td><code>3.14f</code></td><td><code>%f</code></td></tr>
+                <tr><td><code>double</code></td><td>更精确的小数</td><td><code>3.14159</code></td><td><code>%lf</code> 或 <code>%f</code></td></tr>
+                <tr><td><code>char</code></td><td>一个字符</td><td><code>'A'</code>、<code>'0'</code></td><td><code>%c</code></td></tr>
+              </tbody>
+            </table></div>
+            <div class="note-box"><div class="box-title">单引号 vs 双引号</div>
+              <code class="inline">'A'</code> 是 char（一个字符）。
+              <code class="inline">"A"</code> 是字符串（一串字符，后面细讲）。
+              不能混用：<code class="inline">char c = "A";</code> 类型不对。</div>
+            <p><strong>占位符必须和类型对齐</strong>，这是初学最常见的「打印出乱码/怪数」原因：用 %d 打 float、用 %f 打 int，都是未定义行为，结果不可信。</p>
+          </div>
+
+      <h2 id="sec-2">命名规则（必须记）</h2>
+      <div class="prose">
+            <ul>
+              <li>只能用字母、数字、下划线</li>
+              <li><strong>不能以数字开头</strong>（<code class="inline">2name</code> 非法，<code class="inline">name2</code> 合法）</li>
+              <li>不能用关键字（如 <code class="inline">int</code>、<code class="inline">for</code>）</li>
+              <li>建议起有意义的名字：<code class="inline">score</code>、<code class="inline">max_value</code></li>
+            </ul>
+            <p>好名字能省掉注释。<code class="inline">x</code> 在算法题里可以，在业务代码里三个月后就是谜语。</p>
+          </div>
+
+      <h2 id="sec-3">赋值与修改</h2>
+      <div class="prose">
+            <p>赋值 <code class="inline">=</code> 是「算出右边，存进左边」。左边必须是可写的盒子（变量），不能写 <code class="inline">18 = age;</code>。</p>
+            <p><code class="inline">n = n + 5</code> 读作：取出 n 的旧值，加 5，再写回 n。它不是数学等式，而是「更新」。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> n = <span class="tok-n">10</span>;
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, n);   <span class="tok-c">// 10</span>
+    n = <span class="tok-n">20</span>;               <span class="tok-c">// 再次赋值，旧值被覆盖</span>
+    n = n + <span class="tok-n">5</span>;            <span class="tok-c">// 用旧值算完再存回去</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, n);   <span class="tok-c">// 25</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">未初始化就很危险</h2>
+      <div class="prose">
+            <p>局部变量若不赋值就使用，内容是<strong>不确定的垃圾值</strong>。养成习惯：定义时就初始化。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> a;       <span class="tok-c">/* 危险：不知道里面是多少 */</span>
+<span class="tok-k">int</span> b = <span class="tok-n">0</span>;   <span class="tok-c">/* 安全：明确从 0 开始 */</span>
+
+<span class="tok-k">int</span> c, d = <span class="tok-n">1</span>;  <span class="tok-c">/* c 未初始化，d 是 1 —— 容易看漏 */</span></code></pre>
+</div>
+
+      <h2 id="sec-5">sizeof：看类型占几字节</h2>
+      <div class="prose"><p>不同环境里 int 可能是 2 或 4 字节。不确定时就问 sizeof：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;char=%zu  int=%zu  float=%zu\n&quot;</span>,
+           <span class="tok-k">sizeof</span>(<span class="tok-k">char</span>), <span class="tok-k">sizeof</span>(<span class="tok-k">int</span>), <span class="tok-k">sizeof</span>(<span class="tok-k">float</span>));
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-6">类型决定能装什么</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>类型</th><th>大约范围</th><th>适合存</th></tr></thead>
+              <tbody>
+                <tr><td><code>char</code></td><td>-128~127</td><td>单个字符、很小的整数</td></tr>
+                <tr><td><code>int</code></td><td>数十亿（4字节时）</td><td>年龄、个数、下标</td></tr>
+                <tr><td><code>float</code></td><td>约 6~7 位有效数字</td><td>一般小数</td></tr>
+                <tr><td><code>double</code></td><td>约 15 位有效数字</td><td>更精确的计算</td></tr>
+              </tbody>
+            </table></div>
+            <div class="warn-box"><div class="box-title">别混用</div>
+              给 float 赋值建议写 <code class="inline">1.75f</code>（带 f），更明确。
+              把大数硬塞进 char 会溢出，结果变得很怪。</div>
+          </div>
+
+      <h2 id="sec-7">单片机场景 · 变量与常量：计数器</h2>
+      <div class="prose"><p>计数、温度和按键状态都是变量。使用前赋初值，并根据范围选择类型。</p><p><strong>边界与验证：</strong>执行后 cnt = 1，sum = 1。0～255 以 8 位 unsigned char 为前提；实际范围可查看 limits.h 中的 UCHAR_MAX。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">unsigned</span> <span class="tok-k">char</span> cnt = <span class="tok-n">0</span>;
+<span class="tok-k">int</span> sum = <span class="tok-n">0</span>;
+cnt = cnt + <span class="tok-n">1</span>;
+sum = sum + cnt;</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l02" data-answer="2">
+          <p class="quiz-q">下面哪个是合法的变量名？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 2nd</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> int</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> user_name</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> my name</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>逐项排除：2nd 以数字开头，编译器会当成数字字面量而不是标识符；int 是关键字，已被语言占用；my name 中间有空格，会被拆成两个 token。只有 user_name 由字母、下划线、数字组成，且以字母开头，合法。记住三条：不能数字开头、不能用关键字、不能有空格/特殊符号（下划线除外）。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>声明姓名首字母（char）、年龄（int）、身高（float），并打印出来。</li><li>把 age 从 18 改成 19，写出两行赋值代码。</li><li>解释 int 和 float 分别适合存什么。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：综合声明与打印</strong></p>
+          <div class="code-wrap"><pre class="code"><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    char first = 'X';
+    int age = 18;
+    float height = 1.75f;
+
+    printf("首字母 %c\n", first);
+    printf("年龄 %d\n", age);
+    printf("身高 %.2f\n", height);  /* %.2f 保留两位 */
+    return 0;
+}</code></pre></div>
+          <p><strong>2：赋值</strong> <code>age = 18; age = 19;</code> 或直接 <code>int age = 19;</code>。</p>
+          <p><strong>3：怎么选类型</strong>：整数、个数、下标、开关用 int；带小数的测量值（身高、温度）用 float/double；单个字符用 char。钱在工程里常存「分」（整数），避免浮点误差累加。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：常量与宏，把「固定不变的数」写得更清楚。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l02">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/01-l01.html"><span class="dir">上一章</span><span class="title">01 · C 是什么，程序怎么跑</span></a>
+          <a class="pager-link next" href="../chapters/03-l03.html"><span class="dir">下一章</span><span class="title">03 · 常量与 #define</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

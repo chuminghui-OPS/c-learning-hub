@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10 函数 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块二 · 流程与数据 / 第 10 课</div>
+      <h1>10 · 函数</h1>
+      <div class="meta-row">
+        <span class="tag">核心</span>
+        <span class="tag">40 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会定义和调用函数</li><li>理解参数是「拷贝」进去的</li><li>会用返回值把结果交回来</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">为什么拆函数</a> <a href="#sec-1">返回值类型</a> <a href="#sec-2">参数是拷贝</a> <a href="#sec-3">声明（原型）</a> <a href="#sec-4">局部变量与作用域</a> <a href="#sec-5">函数设计小原则</a> <a href="#sec-6">三元运算符（函数里很好用）</a> <a href="#sec-7">单片机场景 · 函数：输入、输出与范围</a></div>
+
+      <h2 id="sec-0">为什么拆函数</h2>
+      <div class="prose">
+            <p>函数 = 一段有名字、可重复使用的代码。写函数时想清楚三件事：</p>
+            <ol>
+              <li><strong>输入</strong>：参数列表（要哪些信息）</li>
+              <li><strong>输出</strong>：返回类型（算完交回什么）；只做事可返回 void</li>
+              <li><strong>职责</strong>：名字要能说明它干什么，例如 add、print_line、max2</li>
+            </ol>
+            <p>调用 <code class="inline">add(3, 4)</code> 时：把 3、4 拷贝给 a、b → 执行函数体 → return 把结果交回调用处。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> add(<span class="tok-k">int</span> a, <span class="tok-k">int</span> b)
+{
+    <span class="tok-k">return</span> a + b;
+}
+
+<span class="tok-k">void</span> say_hello(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;hello\n&quot;</span>);
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> s = add(<span class="tok-n">3</span>, <span class="tok-n">4</span>);
+    say_hello();
+    printf(<span class="tok-s">&quot;sum = %d\n&quot;</span>, s);  <span class="tok-c">// 7</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">返回值类型</h2>
+      <div class="prose">
+            <ul>
+              <li><code class="inline">int add(...)</code>：算完交回一个 int</li>
+              <li><code class="inline">void say_hello(void)</code>：只做事，不交回值</li>
+              <li>调用时：<code class="inline">int s = add(3,4);</code> 或 <code class="inline">say_hello();</code></li>
+            </ul>
+            <p>return 的类型必须和声明一致。声明 int 却不 return，返回值是垃圾；声明 void 却 return 10，编译报错。</p>
+          </div>
+
+      <h2 id="sec-2">参数是拷贝</h2>
+      <div class="prose">
+            <p>把变量传给函数，函数里改的是<strong>自己的那份副本</strong>，外面的变量不会变。这叫<strong>传值（pass by value）</strong>。</p>
+            <p>推论：若参数是 int/float 这类小盒子，函数无法「顺手改掉调用方的变量」——要么 return 新值，要么传地址（指针，第 13 课）。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">void</span> try_change(<span class="tok-k">int</span> x)
+{
+    x = <span class="tok-n">100</span>;  <span class="tok-c">/* 只改了副本 */</span>
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> n = <span class="tok-n">1</span>;
+    try_change(n);
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, n);  <span class="tok-c">/* 还是 1，不是 100 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-3">声明（原型）</h2>
+      <div class="prose"><p>如果函数写在 main 后面，要在前面先「打招呼」，否则编译器不认识：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> max2(<span class="tok-k">int</span> a, <span class="tok-k">int</span> b);  <span class="tok-c">/* 声明 */</span>
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, max2(<span class="tok-n">3</span>, <span class="tok-n">9</span>));
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}
+
+<span class="tok-k">int</span> max2(<span class="tok-k">int</span> a, <span class="tok-k">int</span> b)   <span class="tok-c">/* 定义 */</span>
+{
+    <span class="tok-k">return</span> a &gt; b ? a : b;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">局部变量与作用域</h2>
+      <div class="prose">
+            <p>函数里定义的变量，出了大括号就没了。两个函数可以各自有同名变量，互不干扰。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">void</span> f1(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> n = <span class="tok-n">1</span>;
+    printf(<span class="tok-s">&quot;f1 n=%d\n&quot;</span>, n);
+}
+
+<span class="tok-k">void</span> f2(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> n = <span class="tok-n">2</span>;   <span class="tok-c">/* 和 f1 的 n 无关 */</span>
+    printf(<span class="tok-s">&quot;f2 n=%d\n&quot;</span>, n);
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    f1();
+    f2();
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">函数设计小原则</h2>
+      <div class="prose">
+            <ul>
+              <li>一个函数尽量只做一件事</li>
+              <li>名字用动词或动宾：<code class="inline">print_line</code>、<code class="inline">calc_sum</code></li>
+              <li>参数不要太多（超过 4 个就考虑用结构体）</li>
+              <li>先想「输入是什么、输出是什么」，再写函数体</li>
+            </ul>
+          </div>
+
+      <h2 id="sec-6">三元运算符（函数里很好用）</h2>
+      <div class="prose"><p><code class="inline">条件 ? A : B</code> 条件真取 A，否则取 B。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> max = (a &gt; b) ? a : b;
+<span class="tok-k">int</span> absx = (x &lt; <span class="tok-n">0</span>) ? -x : x;</code></pre>
+</div>
+
+      <h2 id="sec-7">单片机场景 · 函数：输入、输出与范围</h2>
+      <div class="prose"><p>一个函数完成一件事。小类型相加也可能产生更大的结果，避免截断返回值。</p><p><strong>边界与验证：</strong>面向常见 8 位 unsigned char 环境的桌面示例，输出 300。返回类型改为 unsigned int；桌面程序用 int main(void)，不照搬特定嵌入式环境的 void main。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">unsigned</span> <span class="tok-k">int</span> add(<span class="tok-k">unsigned</span> <span class="tok-k">char</span> a, <span class="tok-k">unsigned</span> <span class="tok-k">char</span> b)
+{
+    <span class="tok-k">return</span> (<span class="tok-k">unsigned</span> <span class="tok-k">int</span>)a + (<span class="tok-k">unsigned</span> <span class="tok-k">int</span>)b;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;%u\n&quot;</span>, add(<span class="tok-n">200</span>, <span class="tok-n">100</span>));
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l10" data-answer="1">
+          <p class="quiz-q">函数里修改 int 形参，会改变调用处的实参吗？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 一定会</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> 不会，传进去的是副本</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 看编译器</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 只有数组才会</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>C 默认是「传值」：调用 try_change(n) 时，会把 n 的值复制一份给形参 x。函数里 x=100 改的是这份副本，main 里的 n 原封不动，所以打印仍是 1。若希望函数改到外面的变量，标准做法是传地址：void try_change(int *x){ *x=100; }，调用写 try_change(&amp;n)。也可以让函数 return 新值，由调用方自己赋值：n = compute(n);。先分清「传值」和「传址」，后面学指针会轻松很多。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>写函数 int square(int n) 返回 n*n。</li><li>写 void print_line(void) 打印一行分隔线。</li><li>解释为什么 try_change 改不了 main 里的 n。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：square</strong></p>
+          <div class="code-wrap"><pre class="code"><code>int square(int n)
+{
+    return n * n;
+}</code></pre></div>
+          <p><strong>2：分隔线</strong></p>
+          <div class="code-wrap"><pre class="code"><code>void print_line(void)
+{
+    printf("----------------\n");
+}</code></pre></div>
+          <p><strong>3：为何改不了 n</strong>：调用 try_change(n) 时，实参 n 的值被复制给形参 x。x 在函数自己的栈帧里，x=100 只动了副本。main 的 n 从未被写入。要改外面，用指针：void try_change(int *x){ *x=100; } 调用写 try_change(&n);。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：字符串——程序里怎么处理文字。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l10">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/09-l09.html"><span class="dir">上一章</span><span class="title">09 · 数组</span></a>
+          <a class="pager-link next" href="../chapters/11-l11.html"><span class="dir">下一章</span><span class="title">11 · 字符串基础</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

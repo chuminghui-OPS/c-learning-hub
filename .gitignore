@@ -1,0 +1,16 @@
+# Vercel CLI 本地关联信息
+.vercel
+
+# 操作系统杂物
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 编辑器杂物
+*.swp
+*.swo
+*~
+
+# 构建产物
+node_modules/
+npm-debug.log*

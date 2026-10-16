@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>17 可选延伸：C 用在单片机上时 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块三 · 进阶与实战 / 第 17 课</div>
+      <h1>17 · 可选延伸：C 用在单片机上时</h1>
+      <div class="meta-row">
+        <span class="tag">延伸</span>
+        <span class="tag">30 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>知道嵌入式 C 和桌面 C 的差别</li><li>了解 sbit / 中断 / 定时器是「应用概念」</li><li>明确：先把 C 学好，再碰硬件</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">先说清楚定位</a> <a href="#sec-1">和桌面 C 的主要差别</a> <a href="#sec-2">例程长什么样（混个眼熟）</a> <a href="#sec-3">建议路径</a></div>
+
+      <h2 id="sec-0">先说清楚定位</h2>
+      <div class="prose">
+            <div class="note-box"><div class="box-title">这一课是延伸，不是主线</div>
+              你已经具备的 C 能力（变量、循环、函数、指针、结构体）足以读懂大部分单片机例程。
+              下面只是「以后会见到什么」，不用现在背。</div>
+          </div>
+
+      <h2 id="sec-1">和桌面 C 的主要差别</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>方面</th><th>桌面 C</th><th>51 单片机 C</th></tr></thead>
+              <tbody>
+                <tr><td>入口</td><td>main 返回后进程结束</td><td>常写 while(1) 一直跑</td></tr>
+                <tr><td>输出</td><td>printf 到屏幕</td><td>常通过串口/LED/数码管</td></tr>
+                <tr><td>内存</td><td>很大，可 malloc</td><td>很小，省着用</td></tr>
+                <tr><td>特殊语法</td><td>标准 C</td><td>Keil 有 sbit、interrupt 等扩展</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+      <h2 id="sec-2">例程长什么样（混个眼熟）</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;reg52.h&gt;
+
+<span class="tok-k">sbit</span> LED = P1^<span class="tok-n">0</span>;   <span class="tok-c">/* 把名字 LED 绑到引脚 P1.0 */</span>
+
+<span class="tok-k">void</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">while</span> (<span class="tok-n">1</span>)
+    {
+        LED = <span class="tok-n">0</span>;           <span class="tok-c">/* 点亮（视电路而定） */</span>
+        <span class="tok-c">/* 延时省略 */</span>
+        LED = <span class="tok-n">1</span>;           <span class="tok-c">/* 熄灭 */</span>
+    }
+}</code></pre>
+</div>
+
+      <h2 id="sec-3">建议路径</h2>
+      <div class="prose">
+            <div class="path-line">
+              <span class="path-step"><span class="n">1</span>C 学扎实（本课之前）</span>
+              <span class="path-step"><span class="n">2</span>再学数字电路基础</span>
+              <span class="path-step"><span class="n">3</span>Keil + 点灯</span>
+              <span class="path-step"><span class="n">4</span>定时器 / 中断 / 串口</span>
+            </div>
+            <p>不要跳过 C 直接背寄存器——那会越学越痛苦。</p>
+          </div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l17" data-answer="1">
+          <p class="quiz-q">单片机主程序最常见的结构是？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> main 跑完就结束</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> while(1) 一直循环</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 递归 main</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 只能用汇编</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>桌面程序跑完 main 的 return 就把进程结束了；设备（单片机/固件）上电后要一直工作，不能「跑完就退」。所以主流程放在 while(1) 里反复执行：扫描按键、刷新显示、处理状态。突发事件（定时到、收到串口字节）可交给中断服务函数，中断只做短平快的事（置标志、存数据），重逻辑仍回主循环做。这样既不丢事件，也不把主循环堵死。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>用自己的话总结：桌面 C 和单片机 C 最大的三点不同。</li><li>若以后要学 51，你现在最想先补哪一块 C？写下来。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：</strong>入口/是否一直跑、输出方式、资源与扩展语法。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>主线已结束。可用工具箱与速查表复习，或做随机练习检验。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l17">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/16-l16.html"><span class="dir">上一章</span><span class="title">16 · 综合项目：简易通讯录</span></a>
+          <a class="pager-link next" href="../appendix-examples.html"><span class="dir">下一章</span><span class="title">例题库</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

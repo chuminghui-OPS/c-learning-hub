@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>06 if / else 分支 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link active" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块二 · 流程与数据 / 第 06 课</div>
+      <h1>06 · if / else 分支</h1>
+      <div class="meta-row">
+        <span class="tag">入门</span>
+        <span class="tag">30 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会写单分支和双分支</li><li>会写多条件 else if</li><li>养成「总是加大括号」的习惯</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">基本形态</a> <a href="#sec-1">多分支</a> <a href="#sec-2">为什么要加大括号</a> <a href="#sec-3">从键盘读入再判断</a> <a href="#sec-4">嵌套 if</a> <a href="#sec-5">易错点</a> <a href="#sec-6">单片机场景 · if：温控输出完整赋值</a></div>
+
+      <h2 id="sec-0">基本形态</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> score = <span class="tok-n">85</span>;
+
+    <span class="tok-k">if</span> (score &gt;= <span class="tok-n">60</span>)
+    {
+        printf(<span class="tok-s">&quot;及格\n&quot;</span>);
+    }
+    <span class="tok-k">else</span>
+    {
+        printf(<span class="tok-s">&quot;不及格\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">多分支</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> score = <span class="tok-n">78</span>;
+
+    <span class="tok-k">if</span> (score &gt;= <span class="tok-n">90</span>)
+    {
+        printf(<span class="tok-s">&quot;优秀\n&quot;</span>);
+    }
+    <span class="tok-k">else</span> <span class="tok-k">if</span> (score &gt;= <span class="tok-n">60</span>)
+    {
+        printf(<span class="tok-s">&quot;及格\n&quot;</span>);
+    }
+    <span class="tok-k">else</span>
+    {
+        printf(<span class="tok-s">&quot;不及格\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-2">为什么要加大括号</h2>
+      <div class="prose">
+            <p>if 不写大括号时只控制<strong>下一条</strong>语句。以后一改代码就容易出错。工程上几乎总是写：</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">if</span> (ok)
+{
+    step1();
+    step2();  <span class="tok-c">// 以后加进来也安全</span>
+}</code></pre>
+</div>
+
+      <h2 id="sec-3">从键盘读入再判断</h2>
+      <div class="prose"><p>真实程序很少把分数写死。用 <code class="inline">scanf</code> 读入：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> score;
+
+    printf(<span class="tok-s">&quot;请输入分数: &quot;</span>);
+    scanf(<span class="tok-s">&quot;%d&quot;</span>, &amp;score);   <span class="tok-c">/* 注意：要写 &amp;score，表示“写到这个盒子” */</span>
+
+    <span class="tok-k">if</span> (score &gt;= <span class="tok-n">60</span>)
+    {
+        printf(<span class="tok-s">&quot;及格\n&quot;</span>);
+    }
+    <span class="tok-k">else</span>
+    {
+        printf(<span class="tok-s">&quot;不及格\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">嵌套 if</h2>
+      <div class="prose"><p>条件里还可以再套条件。先想清楚「先判断谁」更合理：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> has_ticket = <span class="tok-n">1</span>;
+    <span class="tok-k">int</span> age = <span class="tok-n">12</span>;
+
+    <span class="tok-k">if</span> (has_ticket)
+    {
+        <span class="tok-k">if</span> (age &gt;= <span class="tok-n">18</span>)
+        {
+            printf(<span class="tok-s">&quot;全票\n&quot;</span>);
+        }
+        <span class="tok-k">else</span>
+        {
+            printf(<span class="tok-s">&quot;半票\n&quot;</span>);
+        }
+    }
+    <span class="tok-k">else</span>
+    {
+        printf(<span class="tok-s">&quot;无票\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">易错点</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">三个高频错误</div>
+              <ul>
+                <li>把 <code class="inline">==</code> 写成 <code class="inline">=</code></li>
+                <li>条件忘加小括号：<code class="inline">if score &gt;= 60</code> 非法</li>
+                <li>浮点数别用 <code class="inline">==</code> 直接比：有精度误差，可比较差值是否小于很小的数</li>
+              </ul></div>
+          </div>
+
+      <h2 id="sec-6">单片机场景 · if：温控输出完整赋值</h2>
+      <div class="prose"><p>温度决定风扇与加热器状态。每次给两个输出赋值，避免上一次状态残留。</p><p><strong>边界与验证：</strong>普通变量逻辑示例，不直接驱动 GPIO。调用时传入两个有效变量的地址。原文部分分支未重置另一输出，此处已修正。真实温控还需故障保护和回差。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">void</span> control(<span class="tok-k">int</span> temp, <span class="tok-k">unsigned</span> <span class="tok-k">char</span> *fan,
+             <span class="tok-k">unsigned</span> <span class="tok-k">char</span> *heater)
+{
+    *fan = <span class="tok-n">0</span>;
+    *heater = <span class="tok-n">0</span>;
+    <span class="tok-k">if</span> (temp &gt; <span class="tok-n">30</span>) {
+        *fan = <span class="tok-n">1</span>;
+    } <span class="tok-k">else</span> <span class="tok-k">if</span> (temp &lt;= <span class="tok-n">20</span>) {
+        *heater = <span class="tok-n">1</span>;
+    }
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l06" data-answer="1">
+          <p class="quiz-q">score=75，执行 if(score&gt;=90) A; else if(score&gt;=60) B; else C; 会执行？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> A</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> B</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> C</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> A 和 B</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>else if 不会「每个都执行」，而是从上往下找第一个条件为真的分支，执行完就整段结束。score=75：先比 75&gt;=90？假，跳过 A；再比 75&gt;=60？真，执行 B；后面的 else C 被跳过。所以输出是 B 对应的内容。若改成 score=95，则 A 为真，B/C 都不会执行。若 score=50，则前两个都假，走 else C。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>输入温度 t：t&gt;30 打印「热」，t&lt;10 打印「冷」，否则「舒适」。</li><li>写判断：既是偶数又大于 10。</li><li>改错：if score &gt;= 60 printf(&quot;ok&quot;);</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：</strong></p>
+          <div class="code-wrap"><pre class="code"><code>int t;
+scanf("%d", &amp;t);
+if (t &gt; 30)      printf("热\n");
+else if (t &lt; 10) printf("冷\n");
+else             printf("舒适\n");</code></pre></div>
+          <p><strong>2：</strong><code>if (n % 2 == 0 &amp;&amp; n &gt; 10)</code></p>
+          <p><strong>3：</strong>条件必须加括号：<code>if (score &gt;= 60) { ... }</code></p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：选项很多时用 switch。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l06">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/05-l05.html"><span class="dir">上一章</span><span class="title">05 · 位运算入门（能读懂就行）</span></a>
+          <a class="pager-link next" href="../chapters/07-l07.html"><span class="dir">下一章</span><span class="title">07 · switch 多分支</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

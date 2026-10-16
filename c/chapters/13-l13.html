@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>13 指针入门 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link active" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块三 · 进阶与实战 / 第 13 课</div>
+      <h1>13 · 指针入门</h1>
+      <div class="meta-row">
+        <span class="tag">核心</span>
+        <span class="tag">45 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>理解地址和 * / &amp;</li><li>会用指针改外部变量</li><li>知道数组名和指针的关系</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">地址与取值</a> <a href="#sec-1">用指针当「输出参数」</a> <a href="#sec-2">数组和指针</a> <a href="#sec-3">必须小心</a> <a href="#sec-4">指针交换两个数</a> <a href="#sec-5">NULL：空指针</a> <a href="#sec-6">单片机场景 · 指针：通过地址修改变量</a></div>
+
+      <h2 id="sec-0">地址与取值</h2>
+      <div class="prose">
+            <p>变量住在内存里，有门牌号（地址）。
+            <code class="inline">&amp;a</code> 取 a 的地址；
+            <code class="inline">*p</code> 表示「p 指向的那个东西」。</p>
+            <p>画一张图帮助理解：</p>
+            <div class="goal-box"><div class="box-title">内存示意</div>
+              a 的地址假设是 0x100，里面存着 10。<br/>
+              执行 int *p = &amp;a; 后，p 这个盒子（自己也有地址）里存的是 0x100。<br/>
+              *p 就是「按 0x100 找到 a」。所以 *p = 20 等于 a = 20。</div>
+            <p>指针类型 <code class="inline">int *</code> 里的 int 是在说：「我指向的东西应被当成 int 来读写」。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a = <span class="tok-n">10</span>;
+    <span class="tok-k">int</span> *p = &amp;a;   <span class="tok-c">/* p 存的是 a 的地址 */</span>
+
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, a);    <span class="tok-c">/* 10 */</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, *p);   <span class="tok-c">/* 也是 10 */</span>
+
+    *p = <span class="tok-n">20</span>;               <span class="tok-c">/* 通过地址改 a */</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, a);    <span class="tok-c">/* 20 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">用指针当「输出参数」</h2>
+      <div class="prose"><p>这是函数「改外面变量」的标准做法。一个函数可以有多个「输出」，靠多个指针参数写出去：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">void</span> set_to_max(<span class="tok-k">int</span> a, <span class="tok-k">int</span> b, <span class="tok-k">int</span> *out)
+{
+    *out = (a &gt; b) ? a : b;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> result;
+    set_to_max(<span class="tok-n">3</span>, <span class="tok-n">9</span>, &amp;result);  <span class="tok-c">/* 把 result 的地址交给 out */</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, result);  <span class="tok-c">/* 9 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-2">数组和指针</h2>
+      <div class="prose">
+            <p>数组名在表达式里常退化成「首元素地址」。<code class="inline">a[i]</code> 等价 <code class="inline">*(a+i)</code>。
+            所以 <code class="inline">p = a;</code> 后，<code class="inline">p[0]</code> 就是 <code class="inline">a[0]</code>。</p>
+            <p>注意：数组名本身不能被赋值成别的（<code class="inline">a = p;</code> 非法），它是「固定的首地址」。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> a[<span class="tok-n">3</span>] = {<span class="tok-n">10</span>, <span class="tok-n">20</span>, <span class="tok-n">30</span>};
+<span class="tok-k">int</span> *p = a;
+<span class="tok-c">/* p[0]==10, *(p+1)==20, a[2]==30 */</span></code></pre>
+</div>
+
+      <h2 id="sec-3">必须小心</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">指针三大坑</div>
+              <ul>
+                <li><strong>未初始化</strong>就使用（野指针）：里面是随机地址，写它可能程序崩溃或改坏内存</li>
+                <li>指向<strong>已销毁</strong>的局部变量（函数已返回，那块栈内存不再属于你）</li>
+                <li>对 <strong>NULL</strong> 解引用：系统会直接崩（段错误）</li>
+              </ul>
+              入门原则：只使用你明确知道指向哪里的指针；可能为空就先 if (p != NULL)。</div>
+          </div>
+
+      <h2 id="sec-4">指针交换两个数</h2>
+      <div class="prose"><p>这是指针最经典、最必须会的用法：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">void</span> swap(<span class="tok-k">int</span> *a, <span class="tok-k">int</span> *b)
+{
+    <span class="tok-k">int</span> t = *a;
+    *a = *b;
+    *b = t;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> x = <span class="tok-n">3</span>, y = <span class="tok-n">8</span>;
+    swap(&amp;x, &amp;y);
+    printf(<span class="tok-s">&quot;x=%d y=%d\n&quot;</span>, x, y);  <span class="tok-c">/* x=8 y=3 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">NULL：空指针</h2>
+      <div class="prose">
+            <p>可以用 <code class="inline">NULL</code> 表示「暂时不指向任何人」。使用前先判断：</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;stddef.h&gt;
+
+<span class="tok-k">void</span> print_if(<span class="tok-k">int</span> *p)
+{
+    <span class="tok-k">if</span> (p == NULL)
+    {
+        printf(<span class="tok-s">&quot;空指针\n&quot;</span>);
+        <span class="tok-k">return</span>;
+    }
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, *p);
+}</code></pre>
+</div>
+
+      <h2 id="sec-6">单片机场景 · 指针：通过地址修改变量</h2>
+      <div class="prose"><p>指针保存地址。先指向有效对象，再解引用读取或修改。</p><p><strong>边界与验证：</strong>y 保存当时读到的值 5，不是对 v 的持续引用。*p = 9 后，v 为 9，y 仍为 5。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">unsigned</span> <span class="tok-k">char</span> v = <span class="tok-n">5</span>;
+<span class="tok-k">unsigned</span> <span class="tok-k">char</span> *p = &amp;v;
+<span class="tok-k">unsigned</span> <span class="tok-k">char</span> y = *p;
+*p = <span class="tok-n">9</span>;</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l13" data-answer="1">
+          <p class="quiz-q">&amp;a 表示？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> a 的值</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> a 的地址</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 逻辑与</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 取反</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>记法要成对：&amp; 是「取地址」，* 是「按地址取内容」。int a=10; int *p=&amp;a; 里，p 这个盒子存的是 a 的门牌号。*p 就是「找到那个门牌号对应的盒子」，读它得到 10，写它等于改 a。若问题问的是 &amp;a，答案是 a 的地址，不是值 10，也不是逻辑与。逻辑与写在条件里如 if(a&amp;&amp;b)，和取地址 &amp; 是不同语境下的同一符号，靠类型系统区分。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>写函数 void inc(int *x)，让 *x 加 1。</li><li>解释 *p = 5 和 p = 5 的区别。</li><li>为什么 scanf 要写 &amp;age 而不是 age？</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：inc</strong></p>
+          <div class="code-wrap"><pre class="code"><code>void inc(int *x)
+{
+    *x = *x + 1;   /* 或 (*x)++ */
+}</code></pre></div>
+          <p><strong>2：*p=5 与 p=5</strong>：<code>*p=5</code> 是「把 5 写进 p 指向的那格」；<code>p=5</code> 是「让 p 这个指针本身存地址 5」。后者几乎总是错的——地址 5 通常不是你的合法内存。</p>
+          <p><strong>3：scanf 为何要 &amp;age</strong>：scanf 需要知道「往哪里写」。age 只是数值，&amp;age 才是盒子的地址。漏写 & 是 scanf 最常见的崩溃原因（未定义行为）。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：结构体——把一组相关数据打包。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l13">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/12-l12.html"><span class="dir">上一章</span><span class="title">12 · 模块二小项目：成绩统计</span></a>
+          <a class="pager-link next" href="../chapters/14-l14.html"><span class="dir">下一章</span><span class="title">14 · 结构体与 typedef</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

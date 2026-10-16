@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>术语表 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="index.html">学习首页</a>
+<a class="side-link" href="appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="appendix-examples.html">例题库</a>
+<a class="side-link" href="appendix-pitfalls.html">易错库</a>
+<a class="side-link active" href="appendix-glossary.html">术语表</a>
+<a class="side-link" href="appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+<h1>术语表</h1>
+<p class="lead">读代码、看报错时反复出现的词。</p>
+<table class="data"><thead><tr><th>术语</th><th>英文</th><th>解释</th></tr></thead><tbody><tr><td><strong>编译</strong></td><td><code>compile</code></td><td>把 .c 源码翻译成机器能执行的文件（如 a.out / exe）。</td></tr><tr><td><strong>预处理</strong></td><td><code>preprocess</code></td><td>编译前的文本处理：#include 展开、#define 替换、#ifdef 裁剪。</td></tr><tr><td><strong>标识符</strong></td><td><code>identifier</code></td><td>变量名、函数名等合法名字；不能数字开头，不能用关键字。</td></tr><tr><td><strong>关键字</strong></td><td><code>keyword</code></td><td>语言保留字，如 int、if、for、return，不能当变量名。</td></tr><tr><td><strong>字面量</strong></td><td><code>literal</code></td><td>写死的值：10、3.14f、'A'、&quot;hi&quot;。</td></tr><tr><td><strong>整数除法</strong></td><td><code>integer division</code></td><td>两边都是整数时 / 只保留整数部分，7/2 得 3。</td></tr><tr><td><strong>短路求值</strong></td><td><code>short-circuit</code></td><td>A&amp;&amp;B 中 A 假则不算 B；可用来先判合法再解引用。</td></tr><tr><td><strong>作用域</strong></td><td><code>scope</code></td><td>名字有效的范围。函数内变量出了大括号就不存在。</td></tr><tr><td><strong>栈</strong></td><td><code>stack</code></td><td>函数调用与局部变量所在的内存区；返回后自动回收。</td></tr><tr><td><strong>传值</strong></td><td><code>pass by value</code></td><td>函数参数得到的是副本，改形参不影响实参。</td></tr><tr><td><strong>传址</strong></td><td><code>pass by address</code></td><td>把 &amp;x 交给指针参数，函数可改到调用方的变量。</td></tr><tr><td><strong>解引用</strong></td><td><code>dereference</code></td><td>*p 取出 p 指向的那格内容。</td></tr><tr><td><strong>空指针</strong></td><td><code>NULL pointer</code></td><td>不指向任何对象的指针；解引用会崩溃。</td></tr><tr><td><strong>越界</strong></td><td><code>out of bounds</code></td><td>访问 a[n] 或更后，未定义行为，极难调试。</td></tr><tr><td><strong>未定义行为</strong></td><td><code>UB</code></td><td>语言不保证结果：可能碰巧能跑，也可能崩溃。</td></tr><tr><td><strong>字符串终止符</strong></td><td><code>NUL / \0</code></td><td>C 字符串以 \0 结束；strlen 数到它为止。</td></tr><tr><td><strong>头文件卫士</strong></td><td><code>include guard</code></td><td>#ifndef/#define/#endif，防止重复包含。</td></tr><tr><td><strong>结构体</strong></td><td><code>struct</code></td><td>把多个相关字段打包成一个自定义类型。</td></tr><tr><td><strong>typedef</strong></td><td><code>typedef</code></td><td>给已有类型起短名，如 typedef struct {...} Point;</td></tr><tr><td><strong>宏</strong></td><td><code>macro</code></td><td>#define 的文本替换；无类型检查，复杂逻辑更推荐函数。</td></tr><tr><td><strong>随机存取</strong></td><td><code>random access</code></td><td>数组用下标直接跳到第 i 个，不必从头扫。</td></tr><tr><td><strong>线性查找</strong></td><td><code>linear search</code></td><td>从头到尾一个个比，O(n)。</td></tr><tr><td><strong>冒泡排序</strong></td><td><code>bubble sort</code></td><td>相邻比较交换，把大数往后推；O(n²)。</td></tr><tr><td><strong>素数</strong></td><td><code>prime</code></td><td>大于 1、只能被 1 和自身整除的整数。</td></tr><tr><td><strong>文件指针</strong></td><td><code>FILE*</code></td><td>fopen 返回的句柄；为 NULL 表示打开失败。</td></tr></tbody></table>
+      </article>
+    </main>
+  </div>
+  <script src="js/search-index.js"></script>
+  <script src="js/study-state.js"></script>
+  <script src="book.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/backup.js"></script>
+</body>
+</html>

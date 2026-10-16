@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>09 数组 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块二 · 流程与数据 / 第 09 课</div>
+      <h1>09 · 数组</h1>
+      <div class="meta-row">
+        <span class="tag">核心</span>
+        <span class="tag">35 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会定义和访问数组</li><li>知道下标从 0 开始</li><li>会遍历数组求和、找最大值</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">定义与访问</a> <a href="#sec-1">下标从 0 开始</a> <a href="#sec-2">初始化与求和</a> <a href="#sec-3">找最大值（必会套路）</a> <a href="#sec-4">从键盘填入数组</a> <a href="#sec-5">二维数组（了解）</a> <a href="#sec-6">单片机场景 · 数组：采样数据与查找表</a></div>
+
+      <h2 id="sec-0">定义与访问</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[<span class="tok-n">5</span>];   <span class="tok-c">/* 5 个 int，下标 0..4 */</span>
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">5</span>; i++)
+    {
+        a[i] = i * <span class="tok-n">10</span>;
+    }
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">5</span>; i++)
+    {
+        printf(<span class="tok-s">&quot;%d &quot;</span>, a[i]);
+    }
+    printf(<span class="tok-s">&quot;\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">下标从 0 开始</h2>
+      <div class="prose">
+            <p>长度为 5 的数组，合法下标是 <strong>0,1,2,3,4</strong>。访问 <code class="inline">a[5]</code> 是<strong>越界</strong>，结果未定义，可能乱改别的内存。</p>
+            <div class="warn-box"><div class="box-title">纪律</div>
+              遍历统一写 <code class="inline">for (i = 0; i &lt; n; i++)</code>，不要写 &lt;= n。</div>
+          </div>
+
+      <h2 id="sec-2">初始化与求和</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[<span class="tok-n">4</span>] = {<span class="tok-n">1</span>, <span class="tok-n">2</span>, <span class="tok-n">3</span>, <span class="tok-n">4</span>};
+    <span class="tok-k">int</span> sum = <span class="tok-n">0</span>;
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">4</span>; i++)
+    {
+        sum = sum + a[i];
+    }
+    printf(<span class="tok-s">&quot;sum = %d\n&quot;</span>, sum);  <span class="tok-c">// 10</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-3">找最大值（必会套路）</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[<span class="tok-n">5</span>] = {<span class="tok-n">12</span>, <span class="tok-n">45</span>, <span class="tok-n">7</span>, <span class="tok-n">88</span>, <span class="tok-n">23</span>};
+    <span class="tok-k">int</span> max = a[<span class="tok-n">0</span>];  <span class="tok-c">/* 先假设第一个最大 */</span>
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">1</span>; i &lt; <span class="tok-n">5</span>; i++)
+    {
+        <span class="tok-k">if</span> (a[i] &gt; max)
+        {
+            max = a[i];
+        }
+    }
+    printf(<span class="tok-s">&quot;max = %d\n&quot;</span>, max);  <span class="tok-c">// 88</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">从键盘填入数组</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+#define N <span class="tok-n">3</span>
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[N];
+    <span class="tok-k">int</span> i;
+
+    printf(<span class="tok-s">&quot;请输入 %d 个整数:\n&quot;</span>, N);
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; N; i++)
+    {
+        scanf(<span class="tok-s">&quot;%d&quot;</span>, &amp;a[i]);  <span class="tok-c">/* 注意 &amp;a[i] */</span>
+    }
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; N; i++)
+    {
+        printf(<span class="tok-s">&quot;%d &quot;</span>, a[i]);
+    }
+    printf(<span class="tok-s">&quot;\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">二维数组（了解）</h2>
+      <div class="prose"><p>可以理解成「表格」：3 行 4 列。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">int</span> m[<span class="tok-n">3</span>][<span class="tok-n">4</span>];  <span class="tok-c">/* 3 行 4 列 */</span>
+m[<span class="tok-n">0</span>][<span class="tok-n">0</span>] = <span class="tok-n">1</span>;  <span class="tok-c">/* 第0行第0列 */</span>
+<span class="tok-c">/* 双重循环遍历：外层行、内层列 */</span></code></pre>
+</div>
+
+      <h2 id="sec-6">单片机场景 · 数组：采样数据与查找表</h2>
+      <div class="prose"><p>数组把同类型数据放在一起，读写前先确认下标范围。</p><p><strong>边界与验证：</strong>table[0] 是第一个元素，table[2] 是第三个。修改第一个元素不影响第三个。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">unsigned</span> <span class="tok-k">char</span> table[<span class="tok-n">5</span>] = {<span class="tok-n">10</span>, <span class="tok-n">20</span>, <span class="tok-n">30</span>, <span class="tok-n">40</span>, <span class="tok-n">50</span>};
+<span class="tok-k">unsigned</span> <span class="tok-k">char</span> x;
+table[<span class="tok-n">0</span>] = <span class="tok-n">99</span>;
+x = table[<span class="tok-n">2</span>];</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l09" data-answer="1">
+          <p class="quiz-q">int a[3] 的合法下标是？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 1,2,3</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> 0,1,2</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 0,1,2,3</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 0..3 都行</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>C 里数组下标从 0 开始编号。int a[3] 表示分配 3 个连续 int：下标分别是 0、1、2。访问 a[3] 已经越出这 3 个位置，属于未定义行为——可能读到垃圾值，也可能改坏相邻变量。不要把「长度 3」理解成「下标到 3」。安全写法：遍历时写 for (i = 0; i &lt; 3; i++)，用「小于长度」而不是「小于等于最大下标」，以后改长度也不容易错。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>定义长度 6 的数组，全部填 0。</li><li>存 5 个成绩，打印最高分。</li><li>越界访问 a[10] 可能发生什么？</li><li>把找最大值改成同时打印最大值的下标。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：全 0 数组</strong> <code>int a[6] = {0};</code> 只写出第一个 0，其余自动为 0。</p>
+          <p><strong>2：5 个成绩的最高分</strong></p>
+          <div class="code-wrap"><pre class="code"><code>int scores[5] = {70, 88, 55, 90, 62};
+int max = scores[0], i;
+for (i = 1; i &lt; 5; i++)
+    if (scores[i] &gt; max) max = scores[i];
+printf("%d\n", max);</code></pre></div>
+          <p><strong>3：越界后果</strong>：a[10] 已不在合法 0..9 内。可能读到别的变量，或写坏别人的内存，表现为「我没改它却变了」的诡异 bug。这类错误往往不能稳定复现。</p>
+          <p><strong>4：同时记下标</strong>：比较成功时除了 max=…，再写 idx=i；最后打印 idx。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：把重复代码收拢成函数。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l09">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/08-l08.html"><span class="dir">上一章</span><span class="title">08 · 循环：for / while</span></a>
+          <a class="pager-link next" href="../chapters/10-l10.html"><span class="dir">下一章</span><span class="title">10 · 函数</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

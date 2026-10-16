@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>学习首页 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="book.css" />
+</head>
+<body class="page-title">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link active" href="index.html">学习首页</a>
+<a class="side-link" href="appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="appendix-examples.html">例题库</a>
+<a class="side-link" href="appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="appendix-glossary.html">术语表</a>
+<a class="side-link" href="appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <p class="eyebrow">基础语法 / 动手练习 / 单片机应用</p>
+      <h1>C 语言学习</h1>
+      <p class="lead">从第一个程序，到读懂单片机代码。一次学一章，把每个知识点用起来。</p>
+      <div class="study-summary" aria-label="学习概况">
+        <div><strong id="home-completed">0 / 17</strong><span>章节完成</span></div>
+        <div><strong id="home-review">0</strong><span>待复习题目</span></div>
+        <div><strong>12</strong><span>单片机场景</span></div>
+      </div>
+      <div class="title-actions">
+        <a class="btn primary" id="resume-link" href="chapters/01-l01.html">开始第 01 章</a>
+        <a class="btn" href="appendix-mcu.html">单片机实践</a>
+        <a class="text-link" href="review.html">错题复习 <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="resume-caption" id="resume-caption">今天从一个能运行的小程序开始。</p>
+      <div class="course-progress"><label for="home-progress">全书进度 <span id="home-percent">0%</span></label><progress id="home-progress" max="17" value="0">0%</progress></div>
+      <details class="learning-data" id="learning-data">
+        <summary>学习数据 · 本地自动保存 / 备份与恢复</summary>
+        <div class="data-body">
+          <p>章节完成、最近学习、测验及错题、实践记录会自动保存在<strong>当前浏览器本地</strong>，不上传。关闭后用同一浏览器、同一路径再次打开即可继续。</p>
+          <p class="data-warning" id="storage-hint">换电脑、换浏览器、移动文件夹或清理浏览器数据前，请先导出备份。不要使用无痕窗口长期学习。</p>
+          <div class="data-actions"><button class="btn" type="button" id="export-progress">导出进度备份</button><button class="btn" type="button" id="choose-backup">选择备份文件</button><input type="file" id="import-progress" accept=".json,application/json" hidden /></div>
+          <p class="data-message" id="backup-status" role="status"></p>
+          <div id="import-preview" class="import-preview" hidden>
+            <p id="import-summary"></p>
+            <label for="import-mode">恢复方式</label>
+            <select id="import-mode"><option value="merge">合并：保留两边已完成进度，测验取较新记录</option><option value="replace">覆盖：用此备份替换当前所有学习记录</option></select>
+            <p class="data-warning" id="replace-warning" hidden>覆盖不能撤销，建议先导出当前进度。主题设置不受影响。</p>
+            <div class="data-actions"><button class="btn primary" type="button" id="confirm-import">确认恢复</button><button class="btn" type="button" id="cancel-import">取消</button></div>
+          </div>
+        </div>
+      </details>
+      <div class="section-heading"><h2>课程目录</h2><label class="filter-label"><input type="checkbox" id="hide-completed" /> 只看未完成</label></div>
+      <p id="all-done" hidden>所有章节都已完成。可以进入单片机实践，或取消筛选回顾基础。</p>
+      <h2>模块一 · 入门基础</h2>
+<p class="mod-desc">变量、类型、运算符、输入输出。先把「程序是怎么跑起来的」弄明白。</p>
+<ol class="book-toc">
+<li data-course-row="l01"><a href="chapters/01-l01.html">01 · C 是什么，程序怎么跑</a><span class="lesson-duration">20 分钟 <span data-course-status="l01"></span></span></li>
+<li data-course-row="l02"><a href="chapters/02-l02.html">02 · 变量与数据类型</a><span class="lesson-duration">30 分钟 <span data-course-status="l02"></span></span></li>
+<li data-course-row="l03"><a href="chapters/03-l03.html">03 · 常量与 #define</a><span class="lesson-duration">25 分钟 <span data-course-status="l03"></span></span></li>
+<li data-course-row="l04"><a href="chapters/04-l04.html">04 · 运算符：算术、比较、逻辑</a><span class="lesson-duration">35 分钟 <span data-course-status="l04"></span></span></li>
+<li data-course-row="l05"><a href="chapters/05-l05.html">05 · 位运算入门（能读懂就行）</a><span class="lesson-duration">30 分钟 <span data-course-status="l05"></span></span></li>
+</ol>
+<h2>模块二 · 流程与数据</h2>
+<p class="mod-desc">分支、循环、数组、函数。能写完整的小程序。</p>
+<ol class="book-toc">
+<li data-course-row="l06"><a href="chapters/06-l06.html">06 · if / else 分支</a><span class="lesson-duration">30 分钟 <span data-course-status="l06"></span></span></li>
+<li data-course-row="l07"><a href="chapters/07-l07.html">07 · switch 多分支</a><span class="lesson-duration">25 分钟 <span data-course-status="l07"></span></span></li>
+<li data-course-row="l08"><a href="chapters/08-l08.html">08 · 循环：for / while</a><span class="lesson-duration">40 分钟 <span data-course-status="l08"></span></span></li>
+<li data-course-row="l09"><a href="chapters/09-l09.html">09 · 数组</a><span class="lesson-duration">35 分钟 <span data-course-status="l09"></span></span></li>
+<li data-course-row="l10"><a href="chapters/10-l10.html">10 · 函数</a><span class="lesson-duration">40 分钟 <span data-course-status="l10"></span></span></li>
+<li data-course-row="l11"><a href="chapters/11-l11.html">11 · 字符串基础</a><span class="lesson-duration">35 分钟 <span data-course-status="l11"></span></span></li>
+<li data-course-row="l12"><a href="chapters/12-l12.html">12 · 模块二小项目：成绩统计</a><span class="lesson-duration">45 分钟 <span data-course-status="l12"></span></span></li>
+</ol>
+<h2>模块三 · 进阶与实战</h2>
+<p class="mod-desc">指针、字符串、结构体、预处理，并完成几个小项目。</p>
+<ol class="book-toc">
+<li data-course-row="l13"><a href="chapters/13-l13.html">13 · 指针入门</a><span class="lesson-duration">45 分钟 <span data-course-status="l13"></span></span></li>
+<li data-course-row="l14"><a href="chapters/14-l14.html">14 · 结构体与 typedef</a><span class="lesson-duration">35 分钟 <span data-course-status="l14"></span></span></li>
+<li data-course-row="l15"><a href="chapters/15-l15.html">15 · 预处理与多文件组织</a><span class="lesson-duration">35 分钟 <span data-course-status="l15"></span></span></li>
+<li data-course-row="l16"><a href="chapters/16-l16.html">16 · 综合项目：简易通讯录</a><span class="lesson-duration">60 分钟 <span data-course-status="l16"></span></span></li>
+<li data-course-row="l17"><a href="chapters/17-l17.html">17 · 可选延伸：C 用在单片机上时</a><span class="lesson-duration">30 分钟 <span data-course-status="l17"></span></span></li>
+</ol>
+
+      <h2>附录</h2>
+      <ul>
+        <li><a href="appendix-examples.html">例题库</a></li>
+        <li><a href="appendix-pitfalls.html">易错库</a></li>
+        <li><a href="appendix-glossary.html">术语表</a></li>
+        <li><a href="appendix-cheatsheet.html">速查表</a></li>
+        <li><a href="appendix-tools.html">工具箱</a></li>
+      </ul>
+      </article>
+    </main>
+  </div>
+  <script src="js/search-index.js"></script>
+  <script src="js/study-state.js"></script>
+  <script src="book.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/backup.js"></script>
+</body>
+</html>

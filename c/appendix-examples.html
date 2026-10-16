@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>例题库 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="index.html">学习首页</a>
+<a class="side-link" href="appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link active" href="appendix-examples.html">例题库</a>
+<a class="side-link" href="appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="appendix-glossary.html">术语表</a>
+<a class="side-link" href="appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+<h1>例题库</h1>
+<p class="lead">完整可运行小程序。先自己写，再对照。</p>
+<h2 id="ex-0">Hello 与多行打印</h2>
+<p><strong>练什么：</strong>熟悉输出、换行、多次调用 printf</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;Hello, C!\n&quot;</span>);
+    printf(<span class="tok-s">&quot;第二行\n\n&quot;</span>);  <span class="tok-c">/* 两个换行 = 空一行 */</span>
+    printf(<span class="tok-s">&quot;第三行不自带换行&quot;</span>);
+    printf(<span class="tok-s">&quot;，接着打\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>\n 是转义字符，表示换行。printf 从左到右依次输出。</p></div>
+
+<h2 id="ex-1">四则运算与整数除法</h2>
+<p><strong>练什么：</strong>分清 / 与 %，以及浮点除法</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a = <span class="tok-n">7</span>, b = <span class="tok-n">2</span>;
+    printf(<span class="tok-s">&quot;a+b=%d\n&quot;</span>, a + b);
+    printf(<span class="tok-s">&quot;a-b=%d\n&quot;</span>, a - b);
+    printf(<span class="tok-s">&quot;a*b=%d\n&quot;</span>, a * b);
+    printf(<span class="tok-s">&quot;a/b=%d  (整数除)\n&quot;</span>, a / b);
+    printf(<span class="tok-s">&quot;a%%b=%d\n&quot;</span>, a % b);
+    printf(<span class="tok-s">&quot;a/b小数=%f\n&quot;</span>, (<span class="tok-k">double</span>)a / b);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>两个 int 用 / 得整数；要小数就先把一边转成 double。</p></div>
+
+<h2 id="ex-2">函数：求两数较大值</h2>
+<p><strong>练什么：</strong>参数、返回值、三目运算符</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> max2(<span class="tok-k">int</span> a, <span class="tok-k">int</span> b)
+{
+    <span class="tok-k">if</span> (a &gt; b) <span class="tok-k">return</span> a;
+    <span class="tok-k">return</span> b;
+    <span class="tok-c">/* 等价：return a &gt; b ? a : b; */</span>
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, max2(<span class="tok-n">3</span>, <span class="tok-n">9</span>));   <span class="tok-c">/* 9 */</span>
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, max2(<span class="tok-n">10</span>, <span class="tok-n">4</span>));  <span class="tok-c">/* 10 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>函数先想清楚：输入是什么、返回什么。名字要能读出意图。</p></div>
+
+<h2 id="ex-3">循环求 1..n 之和</h2>
+<p><strong>练什么：</strong>for 累加；用公式对拍验证</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> sum_to(<span class="tok-k">int</span> n)
+{
+    <span class="tok-k">int</span> i, s = <span class="tok-n">0</span>;
+    <span class="tok-k">for</span> (i = <span class="tok-n">1</span>; i &lt;= n; i++)
+    {
+        s += i;
+    }
+    <span class="tok-k">return</span> s;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;%d\n&quot;</span>, sum_to(<span class="tok-n">100</span>));  <span class="tok-c">/* 5050 = 100*101/2 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>n*(n+1)/2 可用来检查循环写对没有。</p></div>
+
+<h2 id="ex-4">数组：求最大值与下标</h2>
+<p><strong>练什么：</strong>遍历、维护 max 与 idx</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[<span class="tok-n">6</span>] = {<span class="tok-n">12</span>, <span class="tok-n">45</span>, <span class="tok-n">7</span>, <span class="tok-n">88</span>, <span class="tok-n">23</span>, <span class="tok-n">56</span>};
+    <span class="tok-k">int</span> max = a[<span class="tok-n">0</span>];
+    <span class="tok-k">int</span> idx = <span class="tok-n">0</span>;
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">1</span>; i &lt; <span class="tok-n">6</span>; i++)
+    {
+        <span class="tok-k">if</span> (a[i] &gt; max)
+        {
+            max = a[i];
+            idx = i;
+        }
+    }
+    printf(<span class="tok-s">&quot;max=%d at %d\n&quot;</span>, max, idx);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>先假设 a[0] 最大，再从 1 开始比较——这是标准套路。</p></div>
+
+<h2 id="ex-5">字符串：长度与拷贝</h2>
+<p><strong>练什么：</strong>strlen、strcpy、strcmp、缓冲够大</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> src[<span class="tok-n">32</span>] = <span class="tok-s">&quot;Hello&quot;</span>;
+    <span class="tok-k">char</span> dst[<span class="tok-n">32</span>];
+
+    strcpy(dst, src);          <span class="tok-c">/* 拷贝 */</span>
+    printf(<span class="tok-s">&quot;dst=%s len=%zu\n&quot;</span>, dst, strlen(dst));
+
+    <span class="tok-k">if</span> (strcmp(src, dst) == <span class="tok-n">0</span>)
+    {
+        printf(<span class="tok-s">&quot;两个字符串相同\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>dst 必须装得下 src（含 \0）。strcpy 不检查空间大小。</p></div>
+
+<h2 id="ex-6">指针：交换两个变量</h2>
+<p><strong>练什么：</strong>传址才能改到外面</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">void</span> swap(<span class="tok-k">int</span> *a, <span class="tok-k">int</span> *b)
+{
+    <span class="tok-k">int</span> t = *a;
+    *a = *b;
+    *b = t;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> x = <span class="tok-n">3</span>, y = <span class="tok-n">8</span>;
+    swap(&amp;x, &amp;y);
+    printf(<span class="tok-s">&quot;x=%d y=%d\n&quot;</span>, x, y);  <span class="tok-c">/* x=8 y=3 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>若参数写成 int a, int b，函数里换的只是副本，外面不变。</p></div>
+
+<h2 id="ex-7">结构体：学生表</h2>
+<p><strong>练什么：</strong>typedef、结构体数组、遍历打印</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">typedef</span> <span class="tok-k">struct</span>
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">20</span>];
+    <span class="tok-k">int</span> score;
+} Stu;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    Stu a[<span class="tok-n">3</span>] = {
+        {<span class="tok-s">&quot;Ann&quot;</span>, <span class="tok-n">90</span>},
+        {<span class="tok-s">&quot;Bob&quot;</span>, <span class="tok-n">75</span>},
+        {<span class="tok-s">&quot;Cid&quot;</span>, <span class="tok-n">88</span>}
+    };
+    <span class="tok-k">int</span> i;
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">3</span>; i++)
+    {
+        printf(<span class="tok-s">&quot;%-6s %d\n&quot;</span>, a[i].name, a[i].score);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>%-6s 表示左对齐、宽度 6，打印表格更整齐。</p></div>
+
+<h2 id="ex-8">菜单：while + switch</h2>
+<p><strong>练什么：</strong>可退出的命令循环</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> cmd = -<span class="tok-n">1</span>;
+    <span class="tok-k">while</span> (cmd != <span class="tok-n">0</span>)
+    {
+        printf(<span class="tok-s">&quot;====\n1 你好\n2 求和\n0 退出\n&gt; &quot;</span>);
+        <span class="tok-k">if</span> (scanf(<span class="tok-s">&quot;%d&quot;</span>, &amp;cmd) != <span class="tok-n">1</span>) <span class="tok-k">break</span>;
+
+        <span class="tok-k">switch</span> (cmd)
+        {
+            <span class="tok-k">case</span> <span class="tok-n">1</span>: printf(<span class="tok-s">&quot;你好！\n&quot;</span>); <span class="tok-k">break</span>;
+            <span class="tok-k">case</span> <span class="tok-n">2</span>: printf(<span class="tok-s">&quot;1+2=3\n&quot;</span>); <span class="tok-k">break</span>;
+            <span class="tok-k">case</span> <span class="tok-n">0</span>: printf(<span class="tok-s">&quot;再见\n&quot;</span>); <span class="tok-k">break</span>;
+            <span class="tok-k">default</span>: printf(<span class="tok-s">&quot;无效\n&quot;</span>); <span class="tok-k">break</span>;
+        }
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>scanf 返回成功读入的个数；不是 1 说明输入不是整数，直接退出避免死循环。</p></div>
+
+<h2 id="ex-9">综合：算 BMI 并给建议</h2>
+<p><strong>练什么：</strong>读入、浮点、多分支判断</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">double</span> h, m, bmi;
+    printf(<span class="tok-s">&quot;身高(m) 体重(kg): &quot;</span>);
+    <span class="tok-k">if</span> (scanf(<span class="tok-s">&quot;%lf %lf&quot;</span>, &amp;h, &amp;m) != <span class="tok-n">2</span>)
+    {
+        printf(<span class="tok-s">&quot;输入错误\n&quot;</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+    <span class="tok-k">if</span> (h &lt;= <span class="tok-n">0</span>)
+    {
+        printf(<span class="tok-s">&quot;身高必须为正\n&quot;</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+
+    bmi = m / (h * h);
+    printf(<span class="tok-s">&quot;BMI = %.1f\n&quot;</span>, bmi);
+
+    <span class="tok-k">if</span> (bmi &lt; <span class="tok-n">18.5</span>)      printf(<span class="tok-s">&quot;偏瘦\n&quot;</span>);
+    <span class="tok-k">else</span> <span class="tok-k">if</span> (bmi &lt; <span class="tok-n">24</span>)   printf(<span class="tok-s">&quot;正常\n&quot;</span>);
+    <span class="tok-k">else</span> <span class="tok-k">if</span> (bmi &lt; <span class="tok-n">28</span>)   printf(<span class="tok-s">&quot;超重\n&quot;</span>);
+    <span class="tok-k">else</span>                 printf(<span class="tok-s">&quot;肥胖\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>真实程序一定要校验输入。BMI = 体重 / 身高²。</p></div>
+
+<h2 id="ex-10">字符串：统计元音字母</h2>
+<p><strong>练什么：</strong>遍历 char 数组、switch/if、大小写</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> s[<span class="tok-n">128</span>];
+    <span class="tok-k">int</span> i, n = <span class="tok-n">0</span>;
+
+    printf(<span class="tok-s">&quot;输入一句英文: &quot;</span>);
+    scanf(<span class="tok-s">&quot;%127s&quot;</span>, s);   <span class="tok-c">/* 简化：只读一个单词 */</span>
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; s[i] != <span class="tok-s">'\0'</span>; i++)
+    {
+        <span class="tok-k">char</span> c = s[i];
+        <span class="tok-k">if</span> (c &gt;= <span class="tok-s">'A'</span> &amp;&amp; c &lt;= <span class="tok-s">'Z'</span>) c = (<span class="tok-k">char</span>)(c - <span class="tok-s">'A'</span> + <span class="tok-s">'a'</span>);
+        <span class="tok-k">if</span> (c==<span class="tok-s">'a'</span>||c==<span class="tok-s">'e'</span>||c==<span class="tok-s">'i'</span>||c==<span class="tok-s">'o'</span>||c==<span class="tok-s">'u'</span>) n++;
+    }
+    printf(<span class="tok-s">&quot;元音个数 = %d\n&quot;</span>, n);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>字母大小写：先统一转小写再判断。也可以用 strchr(&quot;aeiou&quot;, c)。</p></div>
+
+<h2 id="ex-11">排序：冒泡（把大数往后推）</h2>
+<p><strong>练什么：</strong>双重循环交换；理解「每轮把最大冒到末尾」</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> a[<span class="tok-n">6</span>] = {<span class="tok-n">5</span>, <span class="tok-n">2</span>, <span class="tok-n">9</span>, <span class="tok-n">1</span>, <span class="tok-n">7</span>, <span class="tok-n">3</span>};
+    <span class="tok-k">int</span> i, j, t;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">5</span>; i++)            <span class="tok-c">/* 趟 */</span>
+    {
+        <span class="tok-k">for</span> (j = <span class="tok-n">0</span>; j &lt; <span class="tok-n">5</span> - i; j++)    <span class="tok-c">/* 相邻比较 */</span>
+        {
+            <span class="tok-k">if</span> (a[j] &gt; a[j + <span class="tok-n">1</span>])
+            {
+                t = a[j];
+                a[j] = a[j + <span class="tok-n">1</span>];
+                a[j + <span class="tok-n">1</span>] = t;
+            }
+        }
+    }
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">6</span>; i++) printf(<span class="tok-s">&quot;%d &quot;</span>, a[i]);
+    printf(<span class="tok-s">&quot;\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>内层只到 5-i，因为最后 i 个已经排好。O(n²)，够教学用。</p></div>
+
+<h2 id="ex-12">判断素数（质数）</h2>
+<p><strong>练什么：</strong>试除到 sqrt；函数返回真假</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+<span class="tok-k">int</span> is_prime(<span class="tok-k">int</span> n)
+{
+    <span class="tok-k">int</span> i;
+    <span class="tok-k">if</span> (n &lt; <span class="tok-n">2</span>) <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    <span class="tok-k">if</span> (n == <span class="tok-n">2</span>) <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    <span class="tok-k">if</span> (n % <span class="tok-n">2</span> == <span class="tok-n">0</span>) <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    <span class="tok-k">for</span> (i = <span class="tok-n">3</span>; i * i &lt;= n; i += <span class="tok-n">2</span>)
+    {
+        <span class="tok-k">if</span> (n % i == <span class="tok-n">0</span>) <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    }
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">int</span> x;
+    printf(<span class="tok-s">&quot;输入整数: &quot;</span>);
+    scanf(<span class="tok-s">&quot;%d&quot;</span>, &amp;x);
+    <span class="tok-k">if</span> (is_prime(x)) printf(<span class="tok-s">&quot;%d 是素数\n&quot;</span>, x);
+    <span class="tok-k">else</span> printf(<span class="tok-s">&quot;%d 不是素数\n&quot;</span>, x);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>只要试到 √n。偶数先排除可以少一半循环。编译有时要 -lm。</p></div>
+
+<h2 id="ex-13">反转字符串</h2>
+<p><strong>练什么：</strong>头尾对交换；理解下标移动</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">void</span> reverse(<span class="tok-k">char</span> s[])
+{
+    <span class="tok-k">int</span> i = <span class="tok-n">0</span>;
+    <span class="tok-k">int</span> j = (<span class="tok-k">int</span>)strlen(s) - <span class="tok-n">1</span>;
+    <span class="tok-k">while</span> (i &lt; j)
+    {
+        <span class="tok-k">char</span> t = s[i];
+        s[i] = s[j];
+        s[j] = t;
+        i++;
+        j--;
+    }
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> s[<span class="tok-n">64</span>];
+    printf(<span class="tok-s">&quot;单词: &quot;</span>);
+    scanf(<span class="tok-s">&quot;%63s&quot;</span>, s);
+    reverse(s);
+    printf(<span class="tok-s">&quot;反转: %s\n&quot;</span>, s);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>j 从最后一个字符（不是 \0）开始。i&lt;j 时交换。</p></div>
+
+<h2 id="ex-14">文件：写入再读回（了解）</h2>
+<p><strong>练什么：</strong>fopen/fprintf/fclose/fgets；失败要检查</p>
+<div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    FILE *fp;
+    <span class="tok-k">char</span> line[<span class="tok-n">128</span>];
+
+    fp = fopen(<span class="tok-s">&quot;data.txt&quot;</span>, <span class="tok-s">&quot;w&quot;</span>);
+    <span class="tok-k">if</span> (fp == NULL)
+    {
+        printf(<span class="tok-s">&quot;无法写入\n&quot;</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+    fprintf(fp, <span class="tok-s">&quot;score=%d\n&quot;</span>, <span class="tok-n">95</span>);
+    fprintf(fp, <span class="tok-s">&quot;name=%s\n&quot;</span>, <span class="tok-s">&quot;Ada&quot;</span>);
+    fclose(fp);
+
+    fp = fopen(<span class="tok-s">&quot;data.txt&quot;</span>, <span class="tok-s">&quot;r&quot;</span>);
+    <span class="tok-k">if</span> (fp == NULL)
+    {
+        printf(<span class="tok-s">&quot;无法读取\n&quot;</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+    <span class="tok-k">while</span> (fgets(line, <span class="tok-k">sizeof</span> line, fp) != NULL)
+    {
+        printf(<span class="tok-s">&quot;%s&quot;</span>, line);
+    }
+    fclose(fp);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+<div class="note-box"><div class="box-title">怎么读</div><p>fopen 失败返回 NULL，必须判。用完 fclose。学完指针和字符串后再看更顺。</p></div>
+
+      </article>
+    </main>
+  </div>
+  <script src="js/search-index.js"></script>
+  <script src="js/study-state.js"></script>
+  <script src="book.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/backup.js"></script>
+</body>
+</html>

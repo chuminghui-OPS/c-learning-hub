@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>嵌入式社团 · 学习资源导航</title>
+  <meta name="description" content="嵌入式社团学习资源中心">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0f;
+      --card-bg: #16161d;
+      --card-hover: #1e1e28;
+      --accent: #4a9eff;
+      --accent-glow: rgba(74, 158, 255, 0.3);
+      --text: #e8e8e8;
+      --text-dim: #9ca3af;
+      --border: #2a2a35;
+    }
+    body {
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 900px; width: 100%; }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeIn 0.8s ease-out;
+    }
+    .logo {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 2rem;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px var(--accent-glow);
+      animation: float 3s ease-in-out infinite;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(74, 158, 255, 0.3);
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 1.125rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      animation: fadeIn 1s ease-out 0.3s backwards;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #6366f1);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: var(--text-dim);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .card-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+    .card-meta span::before {
+      content: '•';
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      animation: fadeIn 1.2s ease-out 0.6s backwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="logo">
+        <img src="assets/logo.png" alt="嵌入式社团">
+      </div>
+      <h1>嵌入式社团</h1>
+      <p class="subtitle">学习资源 · 从基础到实践</p>
+    </div>
+
+    <div class="grid">
+      <a href="c/" class="card">
+        <div class="card-icon">C</div>
+        <h2>C 语言教程</h2>
+        <p>系统学习 C 语言基础知识，包含 17 讲正文、6 个附录、测验与错题记录。</p>
+        <div class="card-meta">
+          <span>17 章节</span>
+          <span>互动测验</span>
+        </div>
+      </a>
+
+      <a href="b/双击打开这个文件.html" class="card">
+        <div class="card-icon">💻</div>
+        <h2>电脑基础教程</h2>
+        <p>掌握计算机基础知识，为深入学习打下坚实基础。</p>
+        <div class="card-meta">
+          <span>基础入门</span>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      <p>嵌入式社团学习资源中心 · 所有教程支持离线访问与进度保存</p>
+    </footer>
+  </div>
+</body>
+</html>

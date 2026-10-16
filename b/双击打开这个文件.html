@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>电子扫盲课</title>
+<meta name="description" content="社团电子扫盲第二课：把教案变成可执行的教学博客。" />
+<style>
+:root{
+  --bg:#f7f6f3;
+  --paper:#ffffff;
+  --ink:#1a1a1a;
+  --muted:#6b6b66;
+  --line:#e4e1d9;
+  --accent:#0b6e4f;
+  --accent-soft:#e6f3ed;
+  --warn:#b45309;
+  --warn-soft:#fff7ed;
+  --danger:#b91c1c;
+  --danger-soft:#fef2f2;
+  --code-bg:#f0efe9;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);
+  --radius:10px;
+  --max:720px;
+  --sidebar:240px;
+  --font:ui-sans-serif,system-ui,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"Cascadia Code","Consolas","SFMono-Regular",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:16px;line-height:1.75;letter-spacing:.01em;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd,pre{font-family:var(--mono)}
+kbd{
+  display:inline-block;padding:.1em .45em;border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:5px;background:var(--paper);font-size:.85em;line-height:1.4;
+}
+code{background:var(--code-bg);padding:.1em .35em;border-radius:4px;font-size:.9em}
+
+/* layout */
+.progress{
+  position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:50;transition:width .1s linear
+}
+.shell{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);gap:0;min-height:100vh}
+aside{
+  position:sticky;top:0;height:100vh;overflow-y:auto;overflow-x:hidden;padding:28px 18px 40px;
+  border-right:1px solid var(--line);background:var(--bg)
+}
+.brand{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px 10px}
+.toc{list-style:none;margin:0;padding:0}
+.toc a{
+  display:block;padding:6px 10px;border-radius:6px;color:var(--ink);font-size:13.5px;line-height:1.4
+}
+.toc a:hover{background:var(--paper);text-decoration:none}
+.toc .l1{font-weight:600;margin-top:10px}
+.toc .l2{padding-left:18px;color:var(--muted);font-size:13px}
+main{padding:40px 40px 120px}
+.article{max-width:var(--max);margin:0 auto}
+
+/* type */
+h1{font-size:2rem;line-height:1.25;margin:0 0 12px;letter-spacing:-.02em;font-weight:700}
+h2{font-size:1.35rem;margin:56px 0 14px;letter-spacing:-.01em;scroll-margin-top:24px}
+h3{font-size:1.05rem;margin:28px 0 10px;scroll-margin-top:24px}
+h4{font-size:.95rem;margin:20px 0 8px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+p{margin:0 0 14px}
+.lead{font-size:1.05rem;color:var(--muted);margin-bottom:28px}
+.why{margin:0 0 18px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:.95rem}
+.meta{
+  display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;font-size:13px;color:var(--muted)
+}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border:1px solid var(--line);
+  border-radius:999px;background:var(--paper)
+}
+
+pre.tree{background:var(--code-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.55;overflow:auto;margin:12px 0 16px}
+/* blocks */
+.panel{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)
+}
+.panel.warn{background:var(--warn-soft);border-color:#fdba74}
+.panel.danger{background:var(--danger-soft);border-color:#fca5a5}
+.panel.ok{background:var(--accent-soft);border-color:#86c9ad}
+.panel h4{margin-top:0;color:inherit;text-transform:none;letter-spacing:0;font-size:.95rem;color:var(--ink)}
+.panel-kicker{margin:0 0 8px;font-weight:700;font-size:.95rem;color:var(--ink)}
+.panel.warn h4{color:var(--warn)}
+.panel.danger h4{color:var(--danger)}
+.panel.ok h4{color:var(--accent)}
+
+.steps{counter-reset:step;list-style:none;padding:0;margin:12px 0 20px}
+.steps li{
+  counter-increment:step;position:relative;padding:0 0 16px 36px;border-left:1px solid var(--line);
+  margin-left:12px
+}
+.steps li::before{
+  content:counter(step);position:absolute;left:-13px;top:2px;width:26px;height:26px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;
+  font-size:12px;font-weight:700;font-family:var(--mono);color:var(--accent)
+}
+.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+.steps .act{margin:0 0 4px;font-weight:600}
+.steps .exp{margin:0;font-size:.92rem;color:var(--muted)}
+.steps .exp strong{color:var(--ink);font-weight:600}
+
+.kv{display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font-size:.95rem;margin:0 0 12px}
+.kv dt{color:var(--muted);font-size:.9em}
+.kv dd{margin:0}
+
+ul.plain{margin:0 0 14px;padding-left:1.2em}
+ul.plain li{margin:4px 0}
+
+.figure{margin:20px 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+.figure svg,.figure img{display:block;width:100%;height:auto;background:#111}
+.figure figcaption{
+  padding:10px 14px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);background:var(--paper)
+}
+
+.video{
+  margin:18px 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#000
+}
+.video .ratio{position:relative;padding-top:56.25%}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .cap{
+  background:var(--paper);color:var(--muted);font-size:13px;padding:10px 14px;border-top:1px solid var(--line)
+}
+.video .cap a{font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.94rem;background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--code-bg);font-weight:600;font-size:.9em}
+tr:last-child td{border-bottom:0}
+td.key{white-space:nowrap;font-family:var(--mono);font-size:.88em}
+
+.checklist{list-style:none;padding:0;margin:12px 0 20px}
+.checklist li{
+  display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;background:var(--paper);margin-bottom:8px;font-size:.95rem
+}
+.checklist .box{
+  flex:0 0 16px;width:16px;height:16px;margin-top:5px;border:1.5px solid var(--muted);border-radius:3px
+}
+
+.footer-note{
+  margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)
+}
+.dl-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.dl-card{border-radius:12px;padding:18px 16px;border:2px solid var(--line);background:var(--paper)}
+.dl-card.bad{border-color:#fca5a5;background:#fff1f2}
+.dl-card.good{border-color:#86c9ad;background:#f0fdf6}
+.dl-tag{margin:0 0 10px;font-weight:800;font-size:1.05rem}
+.dl-card.bad .dl-tag{color:#b91c1c}
+.dl-card.good .dl-tag{color:#0b6e4f}
+.dl-url{
+  font-family:var(--mono);font-size:.95rem;padding:8px 12px;border-radius:8px;
+  background:#fff;border:1px solid var(--line);margin-bottom:14px;word-break:break-all
+}
+.dl-btn{
+  text-align:center;padding:16px 12px;border-radius:10px;font-weight:800;font-size:1.25rem;
+  color:#fff;margin-bottom:14px
+}
+.bad-btn{background:#dc2626}
+.good-btn{background:#0b6e4f}
+.dl-card ul{margin:0;padding-left:1.15em;font-size:1rem;line-height:1.7}
+.dl-card li{margin:4px 0}
+@media (max-width:700px){.dl-compare{grid-template-columns:1fr}}
+@media (min-width:1400px){.dl-card ul,.dl-url{font-size:1.05rem}}
+.divider{height:1px;background:var(--line);margin:40px 0}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.badge{
+  font-size:12px;padding:4px 8px;border-radius:5px;background:var(--accent-soft);color:var(--accent);font-weight:600
+}
+.badge.gray{background:var(--code-bg);color:var(--muted)}
+.badge.warm{background:var(--warn-soft);color:var(--warn)}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  aside,main,.article{min-width:0;max-width:100%}
+  aside{
+    position:relative;height:auto;max-height:60vh;border-right:0;
+    border-bottom:1px solid var(--line);overflow-y:auto;overflow-x:hidden
+  }
+  .toc{max-width:100%;overflow-x:hidden}
+  main{padding:28px 18px 80px;overflow-x:hidden}
+  .kv{grid-template-columns:1fr;gap:2px}
+  table{display:block;width:100%;overflow-x:auto}
+  .figure svg{min-width:0}
+}
+input.box{
+  appearance:none;-webkit-appearance:none;width:16px;height:16px;margin:5px 0 0;
+  border:1.5px solid var(--muted);border-radius:3px;background:var(--paper);
+  cursor:pointer;flex:0 0 16px;position:relative
+}
+input.box:checked{background:var(--accent);border-color:var(--accent)}
+input.box:checked::after{
+  content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)
+}
+.video .ratio.video-ph{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:#0b1220;color:#e2e8f0;cursor:pointer;user-select:none;
+  width:100%;height:auto;padding-top:0;aspect-ratio:16/9;box-sizing:border-box;
+  font-family:var(--font)
+}
+.video .ratio.video-ph .video-ph-title{
+  position:absolute;inset:0;display:grid;place-items:center;
+  text-align:center;padding:0 16px;z-index:1
+}
+.video-ph:hover{background:#111827}
+.video-ph-title{font-size:1.05rem;font-weight:600;letter-spacing:.04em}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:8px 12px;z-index:60}
+.skip-link:focus{left:8px;top:8px}
+@media (min-width:1400px){
+  :root{--max:880px}
+  body{font-size:17px}
+  .steps .exp{font-size:1.05rem}
+  figcaption,.video .cap,.toc .l2,.badge,.meta{font-size:15px}
+  .panel,.why,.lead{font-size:1.05rem}
+  th,td{font-size:1rem}
+}
+body.projector{
+  font-size:18px;
+  --max:920px;
+}
+body.projector .steps .exp{font-size:1.1rem}
+body.projector figcaption,body.projector .video .cap,body.projector .toc .l2{font-size:16px}
+body.projector h2{font-size:1.7rem}
+body.projector h3{font-size:1.4rem}
+body.projector h4,body.projector .panel-kicker{font-size:1.1rem}
+body.projector td,body.projector th{font-size:1.05rem}
+body.projector .badge,body.projector .meta,body.projector kbd{font-size:1rem}
+
+.video .ratio.video-ph.has-cover{
+  background-size:cover;background-position:center;position:relative
+}
+.video .ratio.video-ph.has-cover::after{
+  content:"";position:absolute;inset:0;background:rgba(15,23,42,.45)
+}
+.video .ratio.video-ph.has-cover .video-ph-title{position:relative;z-index:1}
+
+@media print{
+  aside,.progress,.skip-link,.video-ph{display:none !important}
+  .shell{display:block}
+  main{padding:0}
+  body{background:#fff;color:#000;font-size:11pt}
+  .panel,.figure,table{break-inside:avoid;box-shadow:none}
+  .figure svg{background:#fff !important}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#444}
+  .video .cap a::after{content:" — https://www.bilibili.com/video/" attr(href)}
+  h2{break-before:page}
+  h2:first-of-type{break-before:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .progress{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#overview">跳到正文</a>
+<div class="progress" id="progress"></div>
+<div class="shell">
+<aside>
+  <p class="brand">电子扫盲</p>
+  <nav>
+    <ul class="toc">
+      <li><a class="l1" href="#overview">0 · 本课目标</a></li>
+      <li><a class="l2" href="#prereq">前置条件</a></li>
+      <li><a class="l1" href="#p1">1 · 电脑与系统基础</a></li>
+      <li><a class="l2" href="#p1-hw">认识自己的电脑</a></li>
+      <li><a class="l2" href="#p1-os">操作系统</a></li>
+      <li><a class="l2" href="#p1-ui">Windows 基本操作</a></li>
+      <li><a class="l2" href="#p1-keys">常用快捷键</a></li>
+      <li><a class="l2" href="#p1-tm">任务管理器</a></li>
+      <li><a class="l2" href="#p1-set">系统设置</a></li>
+      <li><a class="l2" href="#p1-power">电源与性能</a></li>
+      <li><a class="l1" href="#p2">2 · 文件与文件夹管理</a></li>
+      <li><a class="l2" href="#p2-path">文件 · 文件夹 · 路径</a></li>
+      <li><a class="l2" href="#p2-ops">基础文件操作</a></li>
+      <li><a class="l2" href="#p2-ext">文件类型与后缀名</a></li>
+      <li><a class="l2" href="#p2-zip">压缩 · 解压 · 下载</a></li>
+      <li><a class="l2" href="#p2-tree">统一学习目录</a></li>
+      <li><a class="l1" href="#p3">3 · 浏览器与网络资料</a></li>
+      <li><a class="l2" href="#p3-search">浏览器基本使用</a></li>
+      <li><a class="l2" href="#p3-doc">阅读技术文档</a></li>
+      <li><a class="l2" href="#p3-src">搜索与判断资料</a></li>
+      <li><a class="l2" href="#p3-safe">下载与网络安全</a></li>
+      <li><a class="l2" href="#p3-gh">Steam++ 与 GitHub</a></li>
+      <li><a class="l1" href="#p4">4 · 软件安装与环境</a></li>
+      <li><a class="l2" href="#p4-pkg">下载 · 安装 · 运行</a></li>
+      <li><a class="l2" href="#p4-path">安装路径与配置</a></li>
+      <li><a class="l1" href="#p5">5 · 拥抱 AI</a></li>
+      <li><a class="l2" href="#p5-ask">怎么问 AI</a></li>
+      <li><a class="l2" href="#p5-judge">AI 说的不一定对</a></li>
+      <li><a class="l2" href="#p5-cli">以后再用命令行 AI</a></li>
+      <li><a class="l1" href="#hw">课后自检</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<main>
+<article class="article">
+
+<header id="overview">
+  <h1>电子扫盲</h1>
+  <p class="lead">解决最基础的电脑使用问题：能读资料、管文件、装软件、搜问题，并用 AI 自行排查大部分入门问题。后续课程以文档自学、独立操作和现场答疑为主。</p>
+  <h2 id="prereq">前置条件清单</h2>
+  <ul class="plain">
+    <li>一台可登录的 Windows 10/11 电脑（管理员权限可用）。</li>
+    <li>能接入互联网；已安装 Edge 或 Chrome。</li>
+    <li>一个可用邮箱 / B 站账号（看视频、后续注册开发工具用）。</li>
+    <li>本页建议在电脑上打开，不要只在手机上看。</li>
+  </ul>
+</header>
+
+<div class="divider"></div>
+
+<!-- ================= PART 1 ================= -->
+<section id="p1">
+  <h2>1 · 电脑与系统基础</h2>
+  <p>先分清「谁在干活」：CPU 算，内存暂存，硬盘长期存，GPU 画图。系统卡顿优先怀疑内存占用和后台进程，不是先重装系统。</p>
+
+  <h3 id="p1-hw">认识自己的电脑</h3>
+  <table>
+    <thead><tr><th>部件</th><th>一句话职责</th><th>不够用时的症状</th></tr></thead>
+    <tbody>
+      <tr><td><strong>CPU</strong></td><td>执行指令、算逻辑</td><td>编译/解压/渲染时风扇狂转、整机发烫</td></tr>
+      <tr><td><strong>内存 RAM</strong></td><td>程序运行时的临时工作台</td><td>多开软件后明显变卡，硬盘灯狂闪</td></tr>
+      <tr><td><strong>硬盘</strong></td><td>长期存放文件与系统</td><td>开机慢、打开文件慢；空间不足会报错</td></tr>
+      <tr><td><strong>GPU</strong></td><td>画界面、算图形与部分 AI</td><td>游戏掉帧、设计软件卡顿</td></tr>
+    </tbody>
+  </table>
+  <div class="video" data-bvid="BV1UwPgziE3F" data-title="Windows 0 基础合集" data-cover="assets/covers/windows-full.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：Windows 0 基础合集"><span class="video-ph-title">▶ 点击加载 · Windows 0 基础合集</span></div>
+    <div class="cap"><strong>主视频</strong> · <a href="https://www.bilibili.com/video/BV1UwPgziE3F" target="_blank" rel="noopener">【完结】从开关机学起，Windows 系统 0 基础教程</a>（文西碎碎念）—— 通览用，不必一次看完。</div>
+  </div>
+
+    <h3 id="p1-os">操作系统</h3>
+  <p>操作系统（OS）是设备的基础软件，负责连接你、应用程序和硬件。通过它可以开机、联网、装软件、管文件、连打印机或 U 盘。</p>
+  <table>
+    <thead><tr><th>系统</th><th>用在哪</th><th>一句话</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Windows</strong></td><td>多数个人电脑</td><td>兼容性最好，学校/办公/游戏常见</td></tr>
+      <tr><td><strong>macOS</strong></td><td>苹果 Mac</td><td>和 iPhone/iPad 配合好；部分 Windows 软件不能直接跑。犹豫要不要买 Mac，多半不适合</td></tr>
+      <tr><td><strong>Linux</strong></td><td>服务器、开发</td><td>开源、可定制；发行版多，初学有适应期</td></tr>
+      <tr><td><strong>鸿蒙</strong></td><td>华为多设备</td><td>多端协同；工科很多软件不适配，极其不推荐当主力学习机</td></tr>
+      <tr><td><strong>Android / iOS / iPadOS</strong></td><td>手机平板</td><td>点按滑动为主；应用商店安装</td></tr>
+    </tbody>
+  </table>
+  <p>重点掌握<strong>日常使用</strong>，不需要底层原理。电视、手表、路由器也有专用系统，很多基于 Linux。</p>
+
+<h3 id="p1-ui">1.3 Windows 基本操作 · 桌面 · 开始菜单 · 任务栏 · 通知区域</h3>
+  <figure class="figure">
+    <!-- SVG: Windows desktop anatomy -->
+    <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Windows 桌面分区示意图">
+      <rect width="960" height="540" fill="#0f172a"/>
+      <!-- wallpaper hint -->
+      <rect x="0" y="0" width="960" height="500" fill="#1e293b"/>
+      <circle cx="760" cy="120" r="140" fill="#0b6e4f" opacity=".25"/>
+      <circle cx="200" cy="320" r="90" fill="#38bdf8" opacity=".12"/>
+      <!-- desktop icons -->
+      <g font-family="Segoe UI, sans-serif" font-size="12" fill="#e2e8f0">
+        <rect x="24" y="24" width="40" height="40" rx="6" fill="#334155" stroke="#64748b"/>
+        <text x="44" y="78" text-anchor="middle">此电脑</text>
+        <rect x="24" y="100" width="40" height="40" rx="6" fill="#334155" stroke="#64748b"/>
+        <text x="44" y="154" text-anchor="middle">回收站</text>
+      </g>
+      <!-- taskbar -->
+      <rect x="0" y="500" width="960" height="40" fill="#0b1220" opacity=".95"/>
+      <rect x="0" y="500" width="960" height="1" fill="#334155"/>
+      <!-- start -->
+      <rect x="16" y="508" width="28" height="24" rx="4" fill="#0b6e4f"/>
+      <text x="30" y="525" text-anchor="middle" font-size="12" fill="#fff">⊞</text>
+      <!-- search -->
+      <rect x="56" y="510" width="160" height="20" rx="10" fill="#1e293b" stroke="#334155"/>
+      <text x="136" y="524" text-anchor="middle" font-size="11" fill="#94a3b8">搜索</text>
+      <!-- apps -->
+      <g>
+        <rect x="240" y="508" width="24" height="24" rx="4" fill="#1e293b" stroke="#38bdf8"/>
+        <rect x="276" y="508" width="24" height="24" rx="4" fill="#1e293b" stroke="#64748b"/>
+        <rect x="312" y="508" width="24" height="24" rx="4" fill="#1e293b" stroke="#64748b"/>
+        <rect x="348" y="508" width="24" height="24" rx="4" fill="#1e293b" stroke="#64748b"/>
+      </g>
+      <!-- tray -->
+      <g font-size="11" fill="#cbd5e1" font-family="Segoe UI, sans-serif">
+        <text x="780" y="525">^  ⌃   ENG</text>
+        <text x="880" y="525">14:26</text>
+      </g>
+      <!-- callouts -->
+      <g font-family="Segoe UI, sans-serif" font-size="13" fill="#f8fafc">
+        <rect x="24" y="300" width="210" height="54" rx="8" fill="#0b6e4f" opacity=".92"/>
+        <text x="40" y="322" font-weight="600">桌面 Desktop</text>
+        <text x="40" y="340" fill="#d1fae5" font-size="12">临时放文件可以，不要当仓库</text>
+        <path d="M130 354 L130 400" stroke="#0b6e4f" stroke-width="2" fill="none" marker-end="url(#a)"/>
+        <rect x="16" y="430" width="230" height="54" rx="8" fill="#1d4ed8" opacity=".92"/>
+        <text x="32" y="452" font-weight="600">开始菜单 / 搜索</text>
+        <text x="32" y="470" fill="#dbeafe" font-size="12">按 Win 打开；搜应用名启动</text>
+        <rect x="240" y="400" width="250" height="54" rx="8" fill="#7c3aed" opacity=".92"/>
+        <text x="256" y="422" font-weight="600">任务栏固定区</text>
+        <text x="256" y="440" fill="#ede9fe" font-size="12">固定常用程序；点一次即启动</text>
+        <rect x="700" y="400" width="230" height="54" rx="8" fill="#c2410c" opacity=".95"/>
+        <text x="716" y="422" font-weight="600">通知区域 / 托盘</text>
+        <text x="716" y="440" fill="#ffedd5" font-size="12">音量、网络、输入法、后台图标</text>
+      </g>
+      <defs>
+        <marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8" fill="none" stroke="#0b6e4f" stroke-width="1.5"/>
+        </marker>
+      </defs>
+    </svg>
+    <figcaption>图 1 · Windows 桌面四个必认区域。截图目标：能指出「开始菜单、任务栏、通知区域、此电脑」。</figcaption>
+  </figure>
+
+  <ol class="steps">
+    <li>
+      <p class="act">按 <kbd>Win</kbd>，输入「记事本」</p>
+      <p class="exp">预期反馈：开始菜单弹出搜索结果，首选出现「记事本」应用。回车即可打开。</p>
+    </li>
+    <li>
+      <p class="act">在任务栏右键记事本图标 →「固定到任务栏」</p>
+      <p class="exp">预期反馈：图标常驻任务栏，关闭程序后图标仍在，点击可再次启动。</p>
+    </li>
+    <li>
+      <p class="act">点任务栏最右侧「^」展开托盘，找到音量与网络</p>
+      <p class="exp">预期反馈：能看到当前 Wi-Fi 名称与音量滑条。这是排查「没声音 / 没网」的第一现场。</p>
+    </li>
+  </ol>
+
+  <h3 id="p1-win">1.4 程序与窗口</h3>
+  <ul class="plain">
+    <li><strong>最小化</strong>：程序仍在运行，只是藏到任务栏。</li>
+    <li><strong>关闭（×）</strong>：结束该程序。部分软件点 × 只是缩小到托盘，要看托盘图标。</li>
+    <li><strong>切换</strong>：<kbd>Alt</kbd>+<kbd>Tab</kbd> 按住 Alt 连续点 Tab；或点任务栏图标。</li>
+    <li><strong>分屏</strong>：把窗口拖到屏幕左/右边缘，自动占半屏；Win+← / Win+→ 同效。</li>
+    <li><strong>强制结束</strong>：见下文任务管理器，不要长按电源键。</li>
+  </ul>
+
+
+  <h3 id="p1-keys">1.5 常用快捷键</h3>
+  <table>
+    <thead><tr><th>按键</th><th>作用</th><th>何时用</th></tr></thead>
+    <tbody>
+      <tr><td class="key">Ctrl + C</td><td>复制</td><td>选中文本/文件后</td></tr>
+      <tr><td class="key">Ctrl + V</td><td>粘贴</td><td>到目标文件夹或文档</td></tr>
+      <tr><td class="key">Ctrl + X</td><td>剪切</td><td>移动文件，而不是复制两份</td></tr>
+      <tr><td class="key">Ctrl + Z</td><td>撤销</td><td>误删、误改，立刻按</td></tr>
+      <tr><td class="key">Ctrl + A</td><td>全选</td><td>批量移动前</td></tr>
+      <tr><td class="key">Ctrl + S</td><td>保存</td><td>每写一段就按一次</td></tr>
+      <tr><td class="key">Win + E</td><td>打开资源管理器</td><td>找文件的第一入口</td></tr>
+      <tr><td class="key">Win + Shift + S / PrtSc</td><td>截图</td><td>Win+Shift+S 可框选</td></tr>
+      <tr><td class="key">Tab</td><td>在输入框、按钮之间切换</td><td>键盘操作界面时</td></tr>
+      <tr><td class="key">Ctrl + Shift + Esc</td><td>直接打开任务管理器</td><td>程序卡死</td></tr>
+    </tbody>
+  </table>
+  <p>旧文档里的 <kbd>PrtSc</kbd> 仍可用，但 Win10/11 更推荐 <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>：可框选，截图后右下角通知可直接编辑保存。</p>
+
+  <div class="video" data-bvid="BV1F4YDzCEPS" data-title="了解键盘 · 常用快捷键" data-cover="assets/covers/win-key.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：了解键盘 · 常用快捷键"><span class="video-ph-title">▶ 点击加载 · 了解键盘 · 常用快捷键</span></div>
+    <div class="cap"><strong>补看</strong> · <a href="https://www.bilibili.com/video/BV1F4YDzCEPS" target="_blank" rel="noopener">了解键盘【大学生Windows基础09】常用快捷键</a></div>
+  </div>
+
+  
+  <div class="panel ok" id="key-strip">
+    <h4>课堂随身条（可打印）</h4>
+    <p style="margin:0;display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.95rem">
+      <span><kbd>Win</kbd>+<kbd>E</kbd> 开资源管理器</span>
+      <span><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd> 任务管理器</span>
+      <span><kbd>Ctrl</kbd>+<kbd>C</kbd>/<kbd>V</kbd>/<kbd>X</kbd> 复制/粘贴/剪切</span>
+      <span><kbd>Ctrl</kbd>+<kbd>Z</kbd> 撤销</span>
+      <span><kbd>Ctrl</kbd>+<kbd>S</kbd> 保存</span>
+      <span><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> 截图</span>
+      <span><kbd>Alt</kbd>+<kbd>Tab</kbd> 切窗口</span>
+    </p>
+  </div>
+
+  <h3 id="p1-tm">1.6 任务管理器</h3>
+  <p>用途：看谁在占资源、杀掉卡死程序、禁用开机自启。打开方式优先 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd>。</p>
+
+  <figure class="figure">
+    <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="任务管理器界面示意">
+      <rect width="960" height="540" fill="#0f172a"/>
+      <rect x="40" y="30" width="880" height="480" rx="10" fill="#1e293b" stroke="#334155"/>
+      <text x="60" y="60" fill="#f8fafc" font-size="16" font-family="Segoe UI,sans-serif" font-weight="600">任务管理器</text>
+      <!-- nav -->
+      <g font-family="Segoe UI,sans-serif" font-size="13">
+        <rect x="60" y="80" width="120" height="28" rx="6" fill="#0b6e4f"/>
+        <text x="120" y="98" text-anchor="middle" fill="#fff">进程</text>
+        <text x="200" y="98" fill="#94a3b8">性能</text>
+        <text x="260" y="98" fill="#94a3b8">启动应用</text>
+        <text x="350" y="98" fill="#94a3b8">用户</text>
+        <text x="420" y="98" fill="#94a3b8">详细信息</text>
+      </g>
+      <!-- table header -->
+      <g font-family="Segoe UI,sans-serif" font-size="12" fill="#94a3b8">
+        <rect x="60" y="120" width="840" height="28" fill="#0f172a"/>
+        <text x="80" y="139">名称</text>
+        <text x="420" y="139">状态</text>
+        <text x="560" y="139">CPU</text>
+        <text x="660" y="139">内存</text>
+        <text x="760" y="139">磁盘</text>
+      </g>
+      <!-- rows -->
+      <g font-family="Segoe UI,sans-serif" font-size="13" fill="#e2e8f0">
+        <rect x="60" y="148" width="840" height="36" fill="#243044"/>
+        <text x="80" y="171">某浏览器（20 个标签）</text>
+        <text x="560" y="171" fill="#fbbf24">18%</text>
+        <text x="660" y="171" fill="#f87171">2.4 GB</text>
+        <text x="80" y="207">某管家 / 加速球</text>
+        <text x="660" y="207" fill="#f87171">480 MB</text>
+        <text x="80" y="243">某网盘同步</text>
+        <text x="760" y="243" fill="#fbbf24">25%</text>
+        <text x="80" y="279">explorer.exe</text>
+        <text x="560" y="279" fill="#86efac">3%</text>
+      </g>
+      <!-- callouts -->
+      <g font-family="Segoe UI,sans-serif" font-size="13">
+        <rect x="60" y="360" width="260" height="70" rx="8" fill="#0b6e4f" opacity=".95"/>
+        <text x="76" y="385" fill="#fff" font-weight="600">卡死处理</text>
+        <text x="76" y="405" fill="#d1fae5" font-size="12">选中进程 → 右下「结束任务」</text>
+        <text x="76" y="422" fill="#d1fae5" font-size="12">不要长按电源键</text>
+        <rect x="340" y="360" width="280" height="70" rx="8" fill="#1d4ed8" opacity=".95"/>
+        <text x="356" y="385" fill="#fff" font-weight="600">开机自启</text>
+        <text x="356" y="405" fill="#dbeafe" font-size="12">切到「启动应用」</text>
+        <text x="356" y="422" fill="#dbeafe" font-size="12">把无关软件设为「禁用」</text>
+        <rect x="640" y="360" width="260" height="70" rx="8" fill="#c2410c" opacity=".95"/>
+        <text x="656" y="385" fill="#fff" font-weight="600">看占用</text>
+        <text x="656" y="405" fill="#ffedd5" font-size="12">内存长期 &gt; 85% → 先关软件</text>
+        <text x="656" y="422" fill="#ffedd5" font-size="12">磁盘 100% → 关网盘/杀软扫描</text>
+      </g>
+    </svg>
+    <figcaption>图 2 · 任务管理器：扫盲阶段只用得上「进程」和「启动应用」两个页签。</figcaption>
+  </figure>
+
+  <ol class="steps">
+    <li>
+      <p class="act">按 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd></p>
+      <p class="exp">预期反馈：任务管理器窗口直接弹出，不需要经过 Ctrl+Alt+Del 屏幕。</p>
+    </li>
+    <li>
+      <p class="act">点「进程」页签 → 按「内存」列排序</p>
+      <p class="exp">预期反馈：占用最高的程序排到最上面。浏览器开一堆标签时通常排第一。</p>
+    </li>
+    <li>
+      <p class="act">选中卡死的程序 → 点「结束任务」</p>
+      <p class="exp">预期反馈：该程序窗口消失。若桌面图标/任务栏也消失，在任务管理器「文件 → 运行新任务」输入 <code>explorer</code> 回车。</p>
+    </li>
+    <li>
+      <p class="act">切到「启动应用」→ 对无关软件右键「禁用」</p>
+      <p class="exp">预期反馈：状态变为「已禁用」。下次开机该软件不再自动常驻。保留：杀毒、显卡驱动、输入法。</p>
+    </li>
+  </ol>
+
+  <div class="video" data-bvid="BV1T3sHzQEjG" data-title="任务管理器 · 故障不求人" data-cover="assets/covers/troubleshoot.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：任务管理器 · 故障不求人"><span class="video-ph-title">▶ 点击加载 · 任务管理器 · 故障不求人</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1T3sHzQEjG" target="_blank" rel="noopener">故障不求人(上)【大学生Windows基础13】任务管理器丨重启丨安全模式</a></div>
+  </div>
+
+  <h3 id="p1-set">1.7 常见系统设置</h3>
+  <p>入口：点任务栏右下角音量/网络图标可直达；完整设置用 <kbd>Win</kbd>+<kbd>I</kbd>。</p>
+  <ul class="plain">
+    <li>音量：托盘喇叭 → 滑条；应用单独音量在「音量合成器」。</li>
+    <li>网络：托盘 Wi-Fi → 选网 → 连接；能打开网页才算通。</li>
+    <li>显示：设置 → 系统 → 显示 → 缩放（笔记本高分屏常调到 125%/150%）。</li>
+    <li>输入法：托盘「中/英」或 <kbd>Win</kbd>+<kbd>空格</kbd> 切换。</li>
+    <li>默认打开方式：右键文件 →「打开方式 → 选择其他应用」→ 勾选「始终使用」。</li>
+  </ul>
+
+  <div class="panel warn">
+    <h4>描述问题的最低标准</h4>
+    <p style="margin:0">禁止只说「电脑坏了」。提问必须包含：<strong>① 现象原文（截图/报错文字）② 操作系统版本 ③ 软件名与版本 ④ 已做过的步骤 ⑤ 何时开始出现</strong>。做不到这五点，别人无法帮你。</p>
+  </div>
+
+  <h3 id="p1-power">1.8 电源与性能</h3>
+  <table>
+    <thead><tr><th>场景</th><th>设置</th><th>操作路径</th></tr></thead>
+    <tbody>
+      <tr><td>日常学习 / 插电写代码</td><td>平衡或最佳能效</td><td>设置 → 系统 → 电源</td></tr>
+      <tr><td>宿舍熄灯用电池</td><td>最佳能效 + 降低屏幕亮度</td><td>同上；托盘电池图标</td></tr>
+      <tr><td>游戏 / 视频渲染 / 大型编译</td><td>最佳性能；确认独显参与</td><td>电源模式 + 显卡控制面板 / 设置 → 显示 → 显示卡</td></tr>
+      <tr><td>后台静默吃电</td><td>禁用无用启动项与后台应用</td><td>任务管理器 → 启动应用</td></tr>
+    </tbody>
+  </table>
+  <p>日常学习用<strong>省电/能效</strong>模式，关掉不需要的后台。游戏或高性能任务再切性能模式，并了解<strong>帧率限制</strong>（限制帧率能降功耗和发热）。独显可按应用指定走核显或独显。</p>
+
+<div class="video" data-bvid="BV1dd7nzjEBm" data-title="学会关机" data-cover="assets/covers/shutdown.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：学会关机"><span class="video-ph-title">▶ 点击加载 · 学会关机</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1dd7nzjEBm" target="_blank" rel="noopener">学会关机【大学生Windows基础01】睡眠、休眠、关机的区别</a> —— 长按电源键 = 断电，会丢未保存数据。</div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= PART 2 ================= -->
+<section id="p2">
+  <h2>2 · 文件与文件夹管理</h2>
+  <p>本部分是<strong>整门课最需要落地</strong>的内容。目录结构不对，后面提交作业、装环境、迁移电脑都会反复翻车。</p>
+
+  <h3 id="p2-path">2.1 文件 · 文件夹 · 路径</h3>
+  <dl class="kv">
+    <dt>文件</dt><dd>具体内容：代码、文档、图片、压缩包、可执行程序。</dd>
+    <dt>文件夹</dt><dd>分类容器。本身不是内容。</dd>
+    <dt>路径</dt><dd>文件在磁盘上的地址，例如 <code>Study\C\hello.c</code>。</dd>
+  </dl>
+
+  <figure class="figure">
+    <svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文件资源管理器与路径示意">
+      <rect width="960" height="520" fill="#0f172a"/>
+      <rect x="36" y="24" width="888" height="472" rx="10" fill="#1e293b" stroke="#334155"/>
+      <!-- address bar -->
+      <rect x="60" y="48" width="840" height="36" rx="6" fill="#0f172a" stroke="#334155"/>
+      <text x="76" y="71" fill="#e2e8f0" font-size="13" font-family="Consolas,monospace">Study\C</text>
+      <rect x="60" y="100" width="200" height="360" rx="8" fill="#0f172a" stroke="#334155"/>
+      <g font-family="Segoe UI,sans-serif" font-size="13" fill="#cbd5e1">
+        <text x="78" y="130">▾ 此电脑</text>
+        <text x="96" y="160" fill="#94a3b8">  C: 系统</text>
+        <text x="96" y="190" fill="#86efac">  D: 数据  ← 用这个</text>
+        <text x="96" y="220" fill="#94a3b8">  E: U 盘</text>
+        <text x="78" y="270">▾ 快速访问</text>
+        <text x="96" y="300" fill="#fbbf24">  桌面（临时）</text>
+        <text x="96" y="330" fill="#f87171">  下载（中转站）</text>
+        <text x="96" y="360" fill="#fbbf24">  文档</text>
+      </g>
+      <!-- main list -->
+      <g font-family="Segoe UI,sans-serif" font-size="13" fill="#e2e8f0">
+        <text x="290" y="130" font-size="14" font-weight="600">week01</text>
+        <text x="290" y="170">📁 notes</text>
+        <text x="290" y="205">📁 src</text>
+        <text x="290" y="240">📁 hw</text>
+        <text x="290" y="275">📄 README.md</text>
+        <text x="290" y="310">📄 hello.c</text>
+        <text x="290" y="345">📦 lab01.zip</text>
+      </g>
+      <g font-family="Segoe UI,sans-serif" font-size="13">
+        <rect x="600" y="400" width="300" height="90" rx="8" fill="#0b6e4f" opacity=".95"/>
+        <text x="620" y="428" fill="#fff" font-weight="600">路径 = 左侧位置 + 文件夹名</text>
+        <text x="620" y="450" fill="#d1fae5" font-size="12">找不到文件：先看地址栏，再「打开文件所在位置」</text>
+        <text x="620" y="470" fill="#d1fae5" font-size="12">不要靠记忆猜在哪个盘</text>
+      </g>
+    </svg>
+    <figcaption>图 3 · 资源管理器：地址栏是路径的可视化。绿色 D 盘是学习资料默认落点。</figcaption>
+  </figure>
+
+  <div class="video" data-bvid="BV1UtTez2EUH" data-title="文件在哪(上) · 路径" data-cover="assets/covers/files-up.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：文件在哪(上) · 路径"><span class="video-ph-title">▶ 点击加载 · 文件在哪(上) · 路径</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1UtTez2EUH" target="_blank" rel="noopener">文件在哪(上)【大学生Windows基础02】文件系统结构丨C 盘含义</a></div>
+  </div>
+
+  <h3 id="p2-ops">2.2 基础操作原子步骤</h3>
+  <ol class="steps">
+    <li>
+      <p class="act">按 <kbd>Win</kbd>+<kbd>E</kbd> → 进入 D 盘（若无 D 盘用「文档」）</p>
+      <p class="exp">预期反馈：资源管理器打开，左侧可见此电脑各分区。</p>
+    </li>
+    <li>
+      <p class="act">右键空白处 → 新建 → 文件夹 → 命名 <code>Study</code></p>
+      <p class="exp">预期反馈：出现名为 Study 的文件夹。后续所有社团资料进这里。</p>
+    </li>
+    <li>
+      <p class="act">进入磁盘后新建 Study → 再建 <code>C</code>、<code>Tools</code>、<code>Projects</code>、<code>Screenshots</code></p>
+      <p class="exp">预期反馈：资源管理器显示四个子文件夹。</p>
+    </li>
+    <li>
+      <p class="act">选中文件 → <kbd>Ctrl</kbd>+<kbd>C</kbd> → 点目标文件夹 → <kbd>Ctrl</kbd>+<kbd>V</kbd></p>
+      <p class="exp">预期反馈：源文件仍在，目标多出一份 = 复制成功。</p>
+    </li>
+    <li>
+      <p class="act">改用 <kbd>Ctrl</kbd>+<kbd>X</kbd> 再粘贴</p>
+      <p class="exp">预期反馈：源位置文件消失，目标位置出现 = 移动成功。</p>
+    </li>
+    <li>
+      <p class="act">按 <kbd>F2</kbd> 重命名；按 <kbd>Delete</kbd> 移入回收站</p>
+      <p class="exp">预期反馈：名称进入编辑态；删除后可在回收站还原（未清空前）。<strong>不要删除自己不认识的系统文件或软件安装目录里的文件。</strong></p>
+    </li>
+    <li>
+      <p class="act">资源管理器右上角搜索框输入 <code>hello.c</code></p>
+      <p class="exp">预期反馈：当前文件夹及子目录中出现匹配文件。点「打开文件所在位置」可跳转。</p>
+    </li>
+  </ol>
+
+  <div class="video" data-bvid="BV1Eq3uzuE2a" data-title="文件在哪(下) · 资源管理器" data-cover="assets/covers/files-down.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：文件在哪(下) · 资源管理器"><span class="video-ph-title">▶ 点击加载 · 文件在哪(下) · 资源管理器</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1Eq3uzuE2a" target="_blank" rel="noopener">文件在哪(下)【大学生Windows基础04】资源管理器保姆级教程</a></div>
+  </div>
+
+  <h3 id="p2-ext">2.3 文件后缀名</h3>
+  <p>后缀名决定「系统用什么程序打开它」。文件名是给人看的，后缀名是给系统看的。</p>
+
+<div class="video" data-bvid="BV1T1NjzsEKv" data-title="文件在哪(中) · 扩展名" data-cover="assets/covers/ext.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：文件在哪(中) · 扩展名"><span class="video-ph-title">▶ 点击加载 · 文件在哪(中) · 扩展名</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1T1NjzsEKv" target="_blank" rel="noopener">文件在哪(中)【大学生Windows基础03】路径丨扩展名丨打开文件夹</a></div>
+  </div>
+
+
+  <div class="panel ok">
+    <h4>立刻显示后缀名（Win10/11）</h4>
+    <p style="margin:0">资源管理器顶部「查看 → 显示 → 文件扩展名」勾上。看不到 <code>.txt</code> / <code>.c</code> 就无法判断文件类型，后面踩坑概率翻倍。</p>
+  </div>
+
+  <table>
+    <thead><tr><th>后缀</th><th>类型</th><th>谁打开</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td class="key">.c / .h</td><td>C 源码 / 头文件</td><td>编辑器 / IDE</td><td>阅读、修改、提交</td></tr>
+      <tr><td class="key">.md / .pdf / .docx</td><td>文档</td><td>编辑器 / 阅读器 / Word</td><td>笔记、教程、作业</td></tr>
+      <tr><td class="key">.txt</td><td>纯文本</td><td>记事本</td><td>便签、日志</td></tr>
+      <tr><td class="key">.zip / .rar / .7z</td><td>压缩包</td><td>7-Zip / Bandizip</td><td>打包传输</td></tr>
+      <tr><td class="key">.exe / .msi</td><td>可执行 / 安装包</td><td>系统运行</td><td>安装或启动软件 —— 来源必须可信</td></tr>
+      <tr><td class="key">.png / .jpg</td><td>图片</td><td>照片查看器</td><td>截图、素材</td></tr>
+      <tr><td class="key">.lnk</td><td>快捷方式</td><td>系统</td><td>只是入口，删掉一般不删原程序</td></tr>
+    </tbody>
+  </table>
+  <p>规则：把 <code>作业.c</code> 改名成 <code>作业.c.txt</code> 后，它就变成文本文件；把 <code>病毒.txt</code> 改成 <code>病毒.exe</code> 也不会变成正常安装包——改后缀只是换了标签，双击会报错或被拦截。改后缀 ≠ 改内容；来源不明的文件不要为了「试试看」去改后缀。</p>
+
+  <h3 id="p2-zip">2.4 压缩与解压</h3>
+  <p>课堂练习用压缩包由社团群文件在课后发放，文件名含 <code>电子扫盲</code>；下载后解压到 <code>Study\C\Homework\</code> 再操作。</p>
+  <p>压缩包是<strong>单个文件</strong>，不是文件夹。双击只能预览，交作业、装软件前通常要<strong>解压到明确路径</strong>。</p>
+
+  <div class="badge-row">
+    <span class="badge">推荐工具</span>
+    <a class="badge gray" href="https://www.7-zip.org/" target="_blank" rel="noopener">7-Zip 官网</a>
+    <a class="badge gray" href="https://www.bandisoft.com/zh-cn/bandizip/" target="_blank" rel="noopener">Bandizip</a>
+  </div>
+
+  <ol class="steps">
+    <li>
+      <p class="act">安装 7-Zip 或 Bandizip 后，右键 <code>xxx.zip</code></p>
+      <p class="exp">预期反馈：右键菜单出现「7-Zip / 解压到当前文件夹 / 解压到 xxx\\"」。</p>
+    </li>
+    <li>
+      <p class="act">优先选「解压到 xxx\\」（解压进同名文件夹）</p>
+      <p class="exp">预期反馈：多出一个与压缩包同名的文件夹，文件不会撒满桌面。</p>
+    </li>
+    <li>
+      <p class="act">打开解压后的文件夹，确认文件完整</p>
+      <p class="exp">预期反馈：能看到真正的源码/文档，而不是还有一层压缩包。</p>
+    </li>
+    <li>
+      <p class="act">要发送目录时：右键文件夹 → 7-Zip → 添加到「xxx.zip」</p>
+      <p class="exp">预期反馈：生成同名 zip。注意不要把 <code>node_modules</code>、虚拟环境等巨大目录打进去。</p>
+    </li>
+  </ol>
+
+  <div class="video" data-bvid="BV1mchFz6EcR" data-title="学会解压" data-cover="assets/covers/unzip.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：学会解压"><span class="video-ph-title">▶ 点击加载 · 学会解压</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1mchFz6EcR" target="_blank" rel="noopener">学会解压【大学生Windows基础07】压缩包是什么？如何正确解压缩</a></div>
+  </div>
+
+  <h3 id="p2-dl">2.5 管理下载内容</h3>
+  <ol class="steps">
+    <li>
+      <p class="act">在浏览器菜单里打开「下载」页（下载记录）</p>
+      <p class="exp">预期反馈：列出最近下载文件；点文件夹图标可直接跳到下载目录。</p>
+    </li>
+    <li>
+      <p class="act">下载完成后立即：确认文件名完整、后缀正确、体积合理</p>
+      <p class="exp">预期反馈：若是 <code>xxx.exe</code> 且体积异常小（几百 KB 却号称完整安装包），大概率是「下崽器」，删除。</p>
+    </li>
+    <li>
+      <p class="act">把有用文件移动到 <code>Study\...</code> 对应子目录</p>
+      <p class="exp">预期反馈：下载文件夹里只剩垃圾可定期清空。</p>
+    </li>
+  </ol>
+
+  <div class="panel danger">
+    <h4>下载文件夹不是仓库</h4>
+    <p style="margin:0">允许下载文件夹短期中转，禁止长期堆积。每周清一次：有用的移走，无用的删除。桌面同理。</p>
+  </div>
+
+
+  <h3 id="p2-tree">统一学习目录</h3>
+  <p class="why"><strong>为什么学：</strong>这是最重要的一段之一。后面代码、课件、作业、工具都要有固定位置。</p>
+  <p>建议结构：</p>
+  <pre class="tree">Study/
+├── C/
+│   ├── 课件/
+│   ├── PDF/
+│   └── Homework/
+├── Tools/
+├── Projects/
+└── Screenshots/</pre>
+  <ul class="plain">
+    <li>课件、作业、练习代码、开发工具、项目、截图<strong>分类存放</strong>。</li>
+    <li>名称尽量用<strong>英文 / 数字 / 下划线 / 连字符</strong>；安装路径<strong>绝对不要中文</strong>。</li>
+    <li>文件名要能看出内容，例如 <code>week01_hello.c</code>，不要「新建文本文档.c」「作业最终版真的最终版.c」。</li>
+  </ul>
+  <ul class="checklist">
+    <li><input type="checkbox" class="box" /><span>已在数据盘（或「文档」）建立 <code>Study</code> 根目录</span></li>
+    <li><input type="checkbox" class="box" /><span>已建 <code>Study</code> 及 C / Tools / Projects / Screenshots</span></li>
+    <li><input type="checkbox" class="box" /><span>资源管理器已开启「文件扩展名」显示</span></li>
+    <li><input type="checkbox" class="box" /><span>已安装 7-Zip 或 Bandizip，并能右键解压</span></li>
+    <li><input type="checkbox" class="box" /><span>本周下载文件夹已清空或迁移完毕</span></li>
+  </ul>
+
+  <div class="video" data-bvid="BV1kLuFzyEEs" data-title="文件整理术" data-cover="assets/covers/folder-sort.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：文件整理术"><span class="video-ph-title">▶ 点击加载 · 文件整理术</span></div>
+    <div class="cap"><strong>补看</strong> · <a href="https://www.bilibili.com/video/BV1kLuFzyEEs" target="_blank" rel="noopener">文件整理术【大学生Windows基础05】用好默认文件夹</a></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= PART 3 ================= -->
+<section id="p3">
+  <h2>3 · 浏览器与网络资料</h2>
+  <p>后续学习依赖大量官网、文档、博客。目标不是「会打开百度」，而是<strong>用关键词拿到正确版本的正确文件</strong>。</p>
+
+  <h3 id="p3-search">浏览器基本使用</h3>
+  <div class="panel warn">
+    <h4>搜索引擎：少用百度</h4>
+    <p>百度结果里广告、采集站、过时内容多。技术问题优先用 <strong>Bing</strong>、官方文档和社区资料。</p>
+    <p style="margin:0">建议用 <strong>Edge</strong>：第一步先<strong>改默认搜索引擎</strong>（可搜「Edge 修改默认搜索引擎」跟做）。很多官网很难找，可直接问豆包：「给我 xxx 软件的官网」——小心「steam 游戏管家 / 游戏中心」这类仿冒名。</p>
+  </div>
+
+  <ol class="steps">
+    <li>
+      <p class="act">地址栏既可以输网址，也可以输关键词</p>
+      <p class="exp">预期反馈：输 <code>https://www.7-zip.org</code> 直达官网；输 <code>7-zip 官网 下载</code> 进入搜索结果。</p>
+    </li>
+    <li>
+      <p class="act">标签页：中键点击链接 = 后台新开；<kbd>Ctrl</kbd>+<kbd>W</kbd> 关闭；<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> 恢复误关</p>
+      <p class="exp">预期反馈：阅读资料时不丢当前页面。</p>
+    </li>
+    <li>
+      <p class="act">对长期使用的站点：地址栏右侧☆ → 添加书签（或 <kbd>Ctrl</kbd>+<kbd>D</kbd>）</p>
+      <p class="exp">预期反馈：书签栏出现该站。建议建「学习」文件夹归类。</p>
+    </li>
+  </ol>
+
+  <h4>关键词公式</h4>
+  <table>
+    <thead><tr><th>模糊说法（无效）</th><th>可执行关键词（有效）</th></tr></thead>
+    <tbody>
+      <tr><td>为什么不能用</td><td><code>Visual Studio Code 1.92 扩展宿主进程意外终止 Windows 11</code></td></tr>
+      <tr><td>电脑好卡</td><td><code>Windows 11 内存占用高 任务管理器 System 占用</code></td></tr>
+      <tr><td>下个编译器</td><td><code>MinGW-w64 官网 下载 Windows x86_64</code></td></tr>
+      <tr><td>解压打不开</td><td><code>zip 解压 CRC 错误 7-Zip 如何修复</code></td></tr>
+    </tbody>
+  </table>
+  <p>拆词原则：软件名 + 版本 + 系统 + 具体现象/报错原文。报错信息直接整段搜索，比用中文转述准。必要时改用<strong>英文关键词</strong>再搜一遍。</p>
+
+  <h3 id="p3-doc">阅读技术文档</h3>
+  <ul class="plain">
+    <li><code>.md</code>：装一个 Markdown 阅读器（如 <a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a> 或 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>）。</li>
+    <li><code>.pdf</code>：Edge/Chrome 直接拖入即可。</li>
+    <li>官方文档结构：先看 Quick Start / Install，再看你实际用的 API，不要从第一页死磕。</li>
+  </ul>
+
+  <h3 id="p3-src">搜索与判断资料</h3>
+  <table>
+    <thead><tr><th>优先级</th><th>来源</th><th>用法</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>官方网站 / 官方文档</td><td>确认下载链接、参数、版本支持</td></tr>
+      <tr><td>2</td><td>GitHub 官方仓库 Release</td><td>开源工具的可信安装包</td></tr>
+      <tr><td>3</td><td>学校/社团统一文档</td><td>版本与路径以社团为准，优先于网上教程</td></tr>
+      <tr><td>4</td><td>高质量博客 / 视频教程</td><td>理解操作步骤；版本可能过时</td></tr>
+      <tr><td>5</td><td>论坛问答（CSDN/知乎/Stack Overflow）</td><td>排错参考；核对日期与环境再照做</td></tr>
+      <tr><td>✗</td><td>下载站「高速下载」按钮</td><td>默认不可信，见下节</td></tr>
+    </tbody>
+  </table>
+
+  <h3 id="p3-safe">下载与网络安全</h3>
+
+  <figure class="figure" style="background:transparent;border:0">
+    <div class="dl-compare">
+      <div class="dl-card bad">
+        <p class="dl-tag">别点这种</p>
+        <div class="dl-url">xx下载站.com</div>
+        <div class="dl-btn bad-btn">高速下载</div>
+        <ul>
+          <li>地址栏不是官网</li>
+          <li>按钮又大又红</li>
+          <li>文件只有几百 KB</li>
+        </ul>
+      </div>
+      <div class="dl-card good">
+        <p class="dl-tag">点这种</p>
+        <div class="dl-url">www.7-zip.org</div>
+        <div class="dl-btn good-btn">Download</div>
+        <ul>
+          <li>先看地址栏域名</li>
+          <li>只从官网 / 社团链接下</li>
+          <li>找不到就问学长</li>
+        </ul>
+      </div>
+    </div>
+    <figcaption style="border:0;background:transparent;padding:12px 0 0">
+      口诀：<strong>先看网址，再点按钮</strong>。域名不对，按钮再大也不点。
+    </figcaption>
+  </figure>
+
+  <div class="video" data-bvid="BV18TgHzWE17" data-title="下载避坑" data-cover="assets/covers/browser-full.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：下载避坑"><span class="video-ph-title">▶ 点击加载 · 下载避坑</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV18TgHzWE17" target="_blank" rel="noopener">下载避坑【大学生Windows基础06】官网怎么找？避开流氓下崽器</a></div>
+  </div>
+
+  <div class="panel warn">
+    <h4>浏览器说「已阻止」怎么办？</h4>
+    <ol style="margin:8px 0 0;padding-left:1.2em">
+      <li>先别点「保留」。</li>
+      <li>回忆：是不是从官网或社团链接下的？是 → 保留；不确定 → 删掉重下。</li>
+    </ol>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+  <h3 id="p3-gh">Steam++ 与 GitHub</h3>
+  <p><strong>Watt Toolkit（Steam++）</strong>：一类网络工具，可改善部分平台/服务的访问体验。</p>
+  <p><strong>GitHub</strong>：常用代码托管与开源发布平台，很多软件源码、说明和 Release 都在这里。</p>
+  <ul class="plain">
+    <li>访问/下载 GitHub 很慢时：先检查本地网络、<strong>代理设置</strong>和软件官方说明。</li>
+    <li>不要乱装「不明加速器」；用社团已验证的工具或问学长。</li>
+  </ul>
+
+<!-- ================= PART 4 ================= -->
+<section id="p4">
+  <h2>4 · 软件安装与环境配置</h2>
+  <p>安装翻车的两个根因：<strong>下载了假安装包</strong>，以及<strong>无脑点下一步</strong>。</p>
+
+  <h3 id="p4-pkg">下载 · 安装 · 运行</h3>
+  <table>
+    <thead><tr><th>类型</th><th>特征</th><th>正确做法</th></tr></thead>
+    <tbody>
+      <tr><td>官方安装包 <code>.exe/.msi</code></td><td>体积与官网标称接近，有数字签名</td><td>运行安装；看清每一步勾选</td></tr>
+      <tr><td>绿色/便携版</td><td>解压即用，通常 zip/7z</td><td>解压到 <code>tools</code>，自己建快捷方式</td></tr>
+      <tr><td>仅压缩包的「软件」</td><td>解压后是零散 dll/exe</td><td>确认来源；优先换官方安装包</td></tr>
+      <tr><td>下载器「下崽器」</td><td>体积异常小，运行后推销全家桶</td><td>删除；回官网重下</td></tr>
+    </tbody>
+  </table>
+
+  <h3 id="p4-path">安装路径与配置意识</h3>
+
+  <figure class="figure">
+    <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="安装向导避坑示意">
+      <rect width="960" height="480" fill="#0f172a"/>
+      <rect x="120" y="30" width="720" height="420" rx="10" fill="#1e293b" stroke="#334155"/>
+      <text x="150" y="70" fill="#f8fafc" font-size="18" font-family="Segoe UI,sans-serif" font-weight="700">安装向导 · 必看项</text>
+      <!-- path -->
+      <rect x="150" y="100" width="660" height="90" rx="8" fill="#0f172a" stroke="#334155"/>
+      <text x="170" y="130" fill="#94a3b8" font-size="13" font-family="Segoe UI,sans-serif">安装路径</text>
+      <text x="170" y="160" fill="#86efac" font-size="15" font-family="Consolas,monospace">Study\Tools\7-Zip\</text>
+      <text x="170" y="180" fill="#fbbf24" font-size="12" font-family="Segoe UI,sans-serif">✓ 英文路径　✗ 中文/空格　✗ 全部丢 C:\Program Files（社团指定除外）</text>
+      <!-- checkboxes -->
+      <rect x="150" y="210" width="660" height="140" rx="8" fill="#0f172a" stroke="#334155"/>
+      <text x="170" y="240" fill="#94a3b8" font-size="13" font-family="Segoe UI,sans-serif">可选组件 / 附加软件</text>
+      <g font-family="Segoe UI,sans-serif" font-size="14">
+        <text x="190" y="280" fill="#f87171">☐ 安装某某浏览器 / 安全卫士 / 看图王</text>
+        <text x="190" y="310" fill="#f87171">☐ 设为默认 / 开机启动 / 加入体验计划</text>
+        <text x="190" y="340" fill="#86efac">☑ 仅安装本程序、关联必要扩展名</text>
+      </g>
+      <rect x="150" y="370" width="320" height="50" rx="8" fill="#0b6e4f"/>
+      <text x="310" y="400" text-anchor="middle" fill="#fff" font-size="15" font-family="Segoe UI,sans-serif" font-weight="700">下一步（看清再点）</text>
+      <rect x="490" y="370" width="320" height="50" rx="8" fill="#334155"/>
+      <text x="650" y="400" text-anchor="middle" fill="#cbd5e1" font-size="14" font-family="Segoe UI,sans-serif">自定义安装</text>
+    </svg>
+    <figcaption>图 4 · 安装时只做三件事：改英文路径、取消全家桶勾选、确认快捷方式位置。</figcaption>
+  </figure>
+
+  <ol class="steps">
+    <li>
+      <p class="act">从社团文档 / 官网 / GitHub Releases 下载<strong>指定版本</strong>安装包到 <code>Study\Tools\</code></p>
+      <p class="exp">预期反馈：安装包出现在 tools 目录，文件名含版本号，体积合理。</p>
+    </li>
+    <li>
+      <p class="act">右键安装包 →「以管理员身份运行」（仅当需要写系统目录时）</p>
+      <p class="exp">预期反馈：出现 UAC 提示，确认来源后再点「是」。</p>
+    </li>
+    <li>
+      <p class="act">每一页都读：协议跳过即可，但「附加软件/推荐组件」全部取消勾选</p>
+      <p class="exp">预期反馈：安装摘要里只剩目标软件本身。</p>
+    </li>
+    <li>
+      <p class="act">路径改为 <code>Study\Tools\&lt;软件名&gt;\</code>（无中文、无空格）</p>
+      <p class="exp">预期反馈：路径输入框显示英文路径。若程序强制装 C 盘且社团未指定，保持默认并记录。</p>
+    </li>
+    <li>
+      <p class="act">安装完成后：开始菜单搜索软件名 → 右键「打开文件所在位置」确认快捷方式</p>
+      <p class="exp">预期反馈：能定位到安装目录；桌面出现快捷方式（可选）。</p>
+    </li>
+  </ol>
+
+  <div class="video" data-bvid="BV1BWt4zfEn2" data-title="安装与卸载" data-cover="assets/covers/install-d.jpg">
+    <div class="ratio video-ph" role="button" tabindex="0" aria-label="点击加载视频：安装与卸载"><span class="video-ph-title">▶ 点击加载 · 安装与卸载</span></div>
+    <div class="cap"><strong>必看</strong> · <a href="https://www.bilibili.com/video/BV1BWt4zfEn2" target="_blank" rel="noopener">安装与卸载【大学生Windows基础08】快捷方式丨正确卸载</a></div>
+  </div>
+
+  <div class="panel">
+    <h4>卸载规则</h4>
+    <p style="margin:0">用「设置 → 应用 → 安装的应用 → 卸载」，或软件自带 Uninstall。不要直接删安装文件夹（会残留服务、注册表、右键菜单）。卸载后重启资源管理器或注销，残留图标才会消失。</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= PART 5 ================= -->
+<section id="p5">
+  <h2>5 · 拥抱 AI</h2>
+  <p>入门用豆包、DeepSeek 等聊天 AI 就够了。AI 能帮你查问题，但<strong>不能全信</strong>。</p>
+
+  <h3 id="p5-ask">怎么问 AI</h3>
+
+  <figure class="figure">
+    <img src="assets/covers/ai-prompt.jpg" alt="AI 提问模板示意" loading="lazy" />
+    <figcaption>图 5 · 提问模板示意：环境 + 目标 + 现象 + 已做 + 要什么。截图/报错原文优先粘贴。</figcaption>
+  </figure>
+
+  <pre style="background:var(--code-bg);padding:16px 18px;border-radius:10px;overflow:auto;font-size:13.5px;line-height:1.6;border:1px solid var(--line)">【环境】我使用 Windows 11，安装 XXX 软件时出现 XXX 报错
+【目标】右键 zip 时出现「7-Zip → 解压到当前文件夹」
+【现象】右键菜单里完全没有 7-Zip 一项；双击 zip 用的是系统自带预览
+【已做】已从 7-zip.org 安装；已重启过一次资源管理器
+【要什么】先解释右键菜单是怎么来的，再给 3 步以内的排查，不要让我重装系统</pre>
+
+  <ol class="steps">
+    <li>
+      <p class="act">把报错截图或全文贴进去</p>
+      <p class="exp">预期反馈：AI 能引用具体错误码/路径，而不是泛泛而谈。</p>
+    </li>
+    <li>
+      <p class="act">明确「先解释原因，再给步骤」</p>
+      <p class="exp">预期反馈：回答结构是原理 → 操作 → 验证，而不是直接甩一段脚本。</p>
+    </li>
+    <li>
+      <p class="act">按步骤执行，并把真实结果贴回去继续追问</p>
+      <p class="exp">预期反馈：第二轮回答能针对你的输出收敛，而不是重复第一轮。</p>
+    </li>
+  </ol>
+
+  <h3 id="p5-judge">AI 说的不一定对</h3>
+  <ul class="plain">
+    <li>AI 让你<strong>关杀毒、删系统文件、乱改注册表</strong> → <strong>别做</strong>，先问学长。</li>
+    <li>AI 给的<strong>下载链接</strong>先看域名是不是官网。</li>
+    <li>看不懂的命令<strong>不要硬跑</strong>，先让 AI 解释清楚。</li>
+  </ul>
+
+  <h3 id="p5-cli">以后再用命令行 AI</h3>
+  <p>先把上面基础打牢。以后会用资源管理器找文件了，再接触 Codex 这类工具。</p>
+  <ul class="plain">
+    <li>它们能读项目、改代码、解释报错，但会<strong>直接改你电脑里的文件</strong>。</li>
+    <li>第一次用：在<strong>空文件夹</strong>里试，别对着唯一作业跑。</li>
+    <li>先会看它改了什么，再让它改。</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= HW ================= -->
+<section id="hw">
+  <h2>课后验收（全部做完才算过关）</h2>
+  <ul class="checklist">
+    <li><input type="checkbox" class="box" /><span>能用 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd> 结束一个故意卡住的程序（如未响应的记事本）。</span></li>
+    <li><input type="checkbox" class="box" /><span>已禁用至少 1 个无用启动项。</span></li>
+    <li><input type="checkbox" class="box" /><span>已按「统一学习目录」建好 Study 结构。</span></li>
+    <li><input type="checkbox" class="box" /><span>已开启文件扩展名显示；能说出 <code>.c/.md/.zip/.exe</code> 各自用途。</span></li>
+    <li><input type="checkbox" class="box" /><span>从 7-Zip 官网下载并安装，练习右键解压一个 zip。</span></li>
+    <li><input type="checkbox" class="box" /><span>用关键词搜到某软件官网，核对域名后完成下载。</span></li>
+    <li><input type="checkbox" class="box" /><span>按 5.1 模板向 AI 提一个真实问题，并根据回答完成一次排查。</span></li>
+  </ul>
+
+  <h3>三个常见坑（遇到先看这里）</h3>
+
+  <div class="panel">
+    <h4>坑 1 · 压缩包打不开里面的文件</h4>
+    <p>双击 zip 只是<strong>预览</strong>，文件并没有真正解压出来。</p>
+    <p style="margin:0">关掉预览窗口 → 在 zip 上<strong>右键</strong> → 选「解压到当前文件夹」或「解压到 xxx\\」→ 打开解压出来的那个文件夹再用。</p>
+  </div>
+
+  <div class="panel">
+    <h4>坑 2 · 装完软件，桌面多了一堆垃圾</h4>
+    <p>多半是安装时没取消勾选，或者下错了「下载器」。</p>
+    <p style="margin:0">设置 → 应用 → 按安装日期排序 → 卸载今天多出来的软件 → 任务管理器「启动应用」里把残留项禁用 → 回官网重下。</p>
+  </div>
+
+  <div class="panel">
+    <h4>坑 3 · 问别人问题，对方帮不上</h4>
+    <p>只发一句「跑不起来」，别人没法帮你。</p>
+    <p style="margin:0">用 <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> 截图，附上：什么系统、什么软件、完整报错原文、你已经试过什么。</p>
+  </div>
+
+  <h3>延伸链接</h3>
+  <ul class="plain">
+    <li>文西碎碎念 · 大学生 Windows 基础系列：<a href="https://space.bilibili.com/3546676673382527" target="_blank" rel="noopener">UP 主空间</a>（本页主视频来源）</li>
+    <li>7-Zip：<a href="https://www.7-zip.org/" target="_blank" rel="noopener">7-zip.org</a> · Obsidian：<a href="https://obsidian.md/" target="_blank" rel="noopener">obsidian.md</a> · VS Code：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a></li>
+  </ul>
+
+  <p class="footer-note">电子扫盲 · 教学博客版 · 社团电子扫盲课程组 · 操作正确性以「预期反馈」列为准；未出现预期反馈即视为该步骤失败，不要继续下一步。</p>
+</section>
+
+</article>
+</main>
+</div>
+
+<script>
+const bar = document.getElementById('progress');
+const onScroll = () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+};
+document.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// scroll-spy
+const tocLinks = [...document.querySelectorAll('.toc a[href^="#"]')];
+const idSet = tocLinks.map(a => a.getAttribute('href').slice(1));
+const spyTargets = idSet.map(id => document.getElementById(id)).filter(Boolean);
+const spy = () => {
+  let current = spyTargets[0]?.id;
+  const y = window.scrollY + 80;
+  for (const el of spyTargets) {
+    if (el.offsetTop <= y) current = el.id;
+  }
+  tocLinks.forEach(a => {
+    const on = a.getAttribute('href') === '#' + current;
+    a.style.background = on ? 'var(--accent-soft)' : '';
+    a.style.color = on ? 'var(--accent)' : '';
+  });
+};
+document.addEventListener('scroll', spy, { passive: true });
+spy();
+
+document.querySelectorAll('.video[data-bvid]').forEach((box) => {
+  const ph0 = box.querySelector('.video-ph');
+  const cover = box.getAttribute('data-cover');
+  if (ph0 && cover) {
+    ph0.classList.add('has-cover');
+    ph0.style.backgroundImage = "url('" + cover + "')";
+  }
+  const ph = box.querySelector('.video-ph');
+  if (!ph) return;
+  const load = () => {
+    const bvid = box.getAttribute('data-bvid');
+    const wrap = document.createElement('div');
+    wrap.className = 'ratio';
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://player.bilibili.com/player.html?bvid=' + encodeURIComponent(bvid) + '&page=1&high_quality=1&danmaku=0&autoplay=0';
+    iframe.allowFullscreen = true;
+    iframe.loading = 'lazy';
+    iframe.title = 'Bilibili video ' + bvid;
+    wrap.appendChild(iframe);
+    ph.replaceWith(wrap);
+  };
+  ph.addEventListener('click', load);
+  ph.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
+  });
+});
+</script>
+</body>
+</html>

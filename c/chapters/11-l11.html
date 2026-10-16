@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>11 字符串基础 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块二 · 流程与数据 / 第 11 课</div>
+      <h1>11 · 字符串基础</h1>
+      <div class="meta-row">
+        <span class="tag">核心</span>
+        <span class="tag">35 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>知道字符串以 \0 结尾</li><li>会用 strlen / strcpy 等基础函数</li><li>会安全地读入简单字符串</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">字符串是什么</a> <a href="#sec-1">常用函数</a> <a href="#sec-2">和字符的区别</a> <a href="#sec-3">读入字符串</a> <a href="#sec-4">逐个字符处理</a> <a href="#sec-5">strcat 连接</a></div>
+
+      <h2 id="sec-0">字符串是什么</h2>
+      <div class="prose">
+            <p>C 里字符串是 <strong>char 数组 + 结尾的空字符 <code class="inline">\0</code></strong>。</p>
+            <p><code class="inline">"hi"</code> 实际是 <code class="inline">{'h','i','\0'}</code>，占 3 字节。</p>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">20</span>] = <span class="tok-s">&quot;Ada&quot;</span>;
+    printf(<span class="tok-s">&quot;%s\n&quot;</span>, name);
+    printf(<span class="tok-s">&quot;长度 = %lu\n&quot;</span>, (<span class="tok-k">unsigned</span> <span class="tok-k">long</span>)strlen(name)); <span class="tok-c">/* 3，不算 \0 */</span>
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">常用函数</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>函数</th><th>作用</th><th>头文件</th></tr></thead>
+              <tbody>
+                <tr><td><code>strlen(s)</code></td><td>长度（不含 \0）</td><td>string.h</td></tr>
+                <tr><td><code>strcpy(dst, src)</code></td><td>把 src 拷到 dst</td><td>string.h</td></tr>
+                <tr><td><code>strcmp(a,b)</code></td><td>比较，0 表示相等</td><td>string.h</td></tr>
+                <tr><td><code>printf("%s", s)</code></td><td>打印字符串</td><td>stdio.h</td></tr>
+              </tbody>
+            </table></div>
+            <div class="warn-box"><div class="box-title">dst 必须够大</div>
+              strcpy 不会帮你检查空间。dst 太小会写越界，是经典漏洞来源。</div>
+          </div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> a[<span class="tok-n">20</span>] = <span class="tok-s">&quot;hello&quot;</span>;
+    <span class="tok-k">char</span> b[<span class="tok-n">20</span>];
+
+    strcpy(b, a);
+    printf(<span class="tok-s">&quot;%s\n&quot;</span>, b);
+
+    <span class="tok-k">if</span> (strcmp(a, b) == <span class="tok-n">0</span>)
+    {
+        printf(<span class="tok-s">&quot;相同\n&quot;</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-2">和字符的区别</h2>
+      <div class="prose">
+            <ul>
+              <li><code class="inline">'a'</code>：char，一个字符</li>
+              <li><code class="inline">"a"</code>：字符串，至少 <code class="inline">{'a','\0'}</code></li>
+              <li>数组长度要为结尾 \0 留位置：要存 5 个可见字符，至少 char s[6]</li>
+            </ul>
+          </div>
+
+      <h2 id="sec-3">读入字符串</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">32</span>];
+
+    printf(<span class="tok-s">&quot;你的名字: &quot;</span>);
+    scanf(<span class="tok-s">&quot;%31s&quot;</span>, name);   <span class="tok-c">/* 最多读 31 个，给 \0 留位置 */</span>
+    printf(<span class="tok-s">&quot;你好, %s\n&quot;</span>, name);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">逐个字符处理</h2>
+      <div class="prose"><p>很多题目要把字符串当字符数组遍历，遇到 <code class="inline">\0</code> 停：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> s[<span class="tok-n">32</span>] = <span class="tok-s">&quot;Hello&quot;</span>;
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; s[i] != <span class="tok-s">'\0'</span>; i++)
+    {
+        printf(<span class="tok-s">&quot;%c &quot;</span>, s[i]);
+    }
+    printf(<span class="tok-s">&quot;\n长度=%zu\n&quot;</span>, strlen(s));
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">strcat 连接</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">char</span> buf[<span class="tok-n">64</span>] = <span class="tok-s">&quot;Hello&quot;</span>;
+    strcat(buf, <span class="tok-s">&quot;, &quot;</span>);      <span class="tok-c">/* buf 变成 &quot;Hello, &quot; */</span>
+    strcat(buf, <span class="tok-s">&quot;World&quot;</span>);   <span class="tok-c">/* &quot;Hello, World&quot; */</span>
+    printf(<span class="tok-s">&quot;%s\n&quot;</span>, buf);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l11" data-answer="0">
+          <p class="quiz-q">strlen(&quot;abc&quot;) 的值是？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> 3</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> 4</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> 2</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 不确定</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>strlen 统计的是「可见字符个数」，遇到第一个 \0 停止，且不把 \0 算进去。&quot;abc&quot; 在内存里是 a,b,c,\0 四个字节，strlen 返回 3。注意两点：①数组若装不下结尾 \0，strlen 会一直往后数，读到随机内存，结果不可靠；②用 sizeof(数组名) 得到的是数组总字节数，不是字符串长度——若 char s[20]=&quot;Hi&quot;，sizeof 是 20，strlen 是 2。两者用途不同，别混。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>定义能存 10 个字符的数组，初始化为 &quot;Hi&quot;。</li><li>用 strcmp 判断两个字符串是否相等。</li><li>为什么 char s[3] = &quot;abc&quot; 可能有问题？</li><li>写程序：读入一个单词，统计它有几个字符。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：</strong><code>char s[10] = "Hi";</code> 后面自动补 \0，剩余字节为 0。</p>
+          <p><strong>2：比较是否相等</strong></p>
+          <div class="code-wrap"><pre class="code"><code>char a[20] = "hello";
+char b[20] = "hello";
+if (strcmp(a, b) == 0)
+    printf("相同\n");
+else
+    printf("不同\n");</code></pre></div>
+          <p><strong>3：char s[3]="abc"</strong>：字面量需要 a,b,c,\0 共 4 字节，s[3] 只有 3 字节，装不下结尾 \0。之后 strlen 可能越界乱读。至少写 char s[4]。</p>
+          <p><strong>4：统计单词长度</strong></p>
+          <div class="code-wrap"><pre class="code"><code>char w[64];
+scanf("%63s", w);
+printf("长度=%zu\n", strlen(w));</code></pre></div>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>模块二收尾。模块三学指针、结构体和小项目。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l11">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/10-l10.html"><span class="dir">上一章</span><span class="title">10 · 函数</span></a>
+          <a class="pager-link next" href="../chapters/12-l12.html"><span class="dir">下一章</span><span class="title">12 · 模块二小项目：成绩统计</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

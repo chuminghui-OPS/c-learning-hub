@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>01 C 是什么，程序怎么跑 · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link active" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块一 · 入门基础 / 第 01 课</div>
+      <h1>01 · C 是什么，程序怎么跑</h1>
+      <div class="meta-row">
+        <span class="tag">入门</span>
+        <span class="tag">20 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>明白 C 语言用来做什么</li><li>读懂最小程序每一行的意思</li><li>知道「写代码 → 编译 → 运行」三步</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">先建立一个画面</a> <a href="#sec-1">最小程序（Hello World）</a> <a href="#sec-2">一行一行拆开</a> <a href="#sec-3">自己改一版</a> <a href="#sec-4">printf 可以打很多次</a> <a href="#sec-5">新手最容易犯的错</a> <a href="#sec-6">动手小实验（不要跳过）</a></div>
+
+      <h2 id="sec-0">先建立一个画面</h2>
+      <div class="prose">
+            <p>C 是一门<strong>接近硬件、速度很快</strong>的编程语言。操作系统、嵌入式、很多底层库都是 C 写的。</p>
+            <p>你写的源码是给人看的文本，计算机看不懂。要先经过<strong>编译器</strong>翻译成机器码，再运行。</p>
+            <div class="path-line">
+              <span class="path-step"><span class="n">1</span>写 .c 文件</span>
+              <span class="path-step"><span class="n">2</span>编译</span>
+              <span class="path-step"><span class="n">3</span>得到可执行文件</span>
+              <span class="path-step"><span class="n">4</span>运行看结果</span>
+            </div>
+            <p>初学阶段，你只要会：读懂代码、改几行、重新编译运行。</p>
+          </div>
+
+      <h2 id="sec-1">最小程序（Hello World）</h2>
+      <div class="prose"><p>下面几乎每个 C 程序都从这种骨架开始。注释用灰色显示，计算机不会执行它。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-c">// 这是注释，给人看的</span>
+    printf(<span class="tok-s">&quot;Hello, World!\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-2">一行一行拆开</h2>
+      <div class="prose">
+            <div class="table-wrap"><table class="data">
+              <thead><tr><th>代码</th><th>意思</th></tr></thead>
+              <tbody>
+                <tr><td><code>#include &lt;stdio.h&gt;</code></td><td>引入「标准输入输出」工具箱，才能用 printf</td></tr>
+                <tr><td><code>int main(void)</code></td><td>主函数。程序从这里开始跑，只能有一个 main</td></tr>
+                <tr><td><code>{ ... }</code></td><td>大括号包住函数体，表示「要做的事」</td></tr>
+                <tr><td><code>printf("...");</code></td><td>把引号里的文字打印到屏幕；<code>\n</code> 表示换行</td></tr>
+                <tr><td><code>return 0;</code></td><td>告诉系统：我正常结束了</td></tr>
+                <tr><td><code>;</code></td><td>分号表示一条语句结束，漏了会编译报错</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+      <h2 id="sec-3">自己改一版</h2>
+      <div class="prose"><p>把字符串改成你的名字，再运行。这就是编程的日常：改一点 → 看变化。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;你好，我是小明\n&quot;</span>);
+    printf(<span class="tok-s">&quot;今天开始学 C\n&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">printf 可以打很多次</h2>
+      <div class="prose"><p>printf 会从左到右依次输出；想换行就写 <code class="inline">\n</code>。</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    printf(<span class="tok-s">&quot;第一行\n&quot;</span>);
+    printf(<span class="tok-s">&quot;第二行\n\n&quot;</span>);  <span class="tok-c">/* 连续两个换行 = 空一行 */</span>
+    printf(<span class="tok-s">&quot;第三行&quot;</span>);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-5">新手最容易犯的错</h2>
+      <div class="prose">
+            <div class="warn-box"><div class="box-title">对照检查</div>
+              <ul>
+                <li>中文分号／引号：必须用英文的 <code class="inline">;</code> <code class="inline">"</code></li>
+                <li>漏写 <code class="inline">;</code>：编译器会在下一行报错</li>
+                <li>main 写成 mian：运行入口找不到</li>
+                <li>忘了 include stdio.h 却用了 printf</li>
+              </ul>
+            </div>
+          </div>
+
+      <h2 id="sec-6">动手小实验（不要跳过）</h2>
+      <div class="prose">
+            <ol>
+              <li>把 Hello World 改成打印你的城市。</li>
+              <li>故意删掉一个分号，看编译器说什么，再改回来。</li>
+              <li>加一行打印当前心情。</li>
+            </ol>
+            <p>能独立完成这三步，本课就算过关。</p>
+          </div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l01" data-answer="1">
+          <p class="quiz-q">C 程序从哪个函数开始执行？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> start()</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> main()</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> begin()</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> 第一个写的函数</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>C 语言规定：程序的入口固定是 main。运行时系统会先做初始化，然后跳到 main 的第一行开始执行。一个可执行程序里只能有一个 main——如果有两个，链接器会报「multiple definition of main」。main 写成 int main(void) 表示：不接收命令行参数，结束后用整数向系统报告状态（0 通常表示成功）。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>默写 Hello World 程序，并用中文写出每一行在干什么。</li><li>改成打印两行：你的名字、你学 C 的目标。</li><li>如果把 return 0; 删掉，很多环境仍能运行。想一想：为什么规范里还要写？</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：默写并口述</strong></p>
+          <div class="code-wrap"><pre class="code"><code>#include &lt;stdio.h&gt;   /* ① 预处理：把标准输入输出头文件插进来 */
+int main(void)      /* ② 程序入口，只能有一个 */
+{
+    /* ③ 注释，编译器忽略 */
+    printf("Hello, World!\n");  /* ④ 格式化输出；\n 是换行 */
+    return 0;           /* ⑤ 向系统报告：正常结束 */
+}</code></pre></div>
+          <p><strong>2：改两行</strong></p>
+          <div class="code-wrap"><pre class="code"><code>printf("你好，我是小明\n");
+printf("今天开始学 C\n");</code></pre></div>
+          <p><strong>3：为什么规范还写 return 0</strong>：main 返回 int，0 约定表示成功，非 0 可表示失败。写上它与标准一致，也方便以后改成返回错误码；有些环境不写也能跑，但不能依赖「碰巧能跑」。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：程序里数据怎么放——变量和类型。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l01">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../index.html"><span class="dir">上一章</span><span class="title">封面与目录</span></a>
+          <a class="pager-link next" href="../chapters/02-l02.html"><span class="dir">下一章</span><span class="title">02 · 变量与数据类型</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>

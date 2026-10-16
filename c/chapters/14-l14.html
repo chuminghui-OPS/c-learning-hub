@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>14 结构体与 typedef · C 语言书</title>
+  <meta name="description" content="C 语言系统自学：章节、例题、小测与讲解。" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="stylesheet" href="../book.css" />
+</head>
+<body class="">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="book-header">
+    <button type="button" class="icon-btn" id="btn-menu" aria-label="目录" title="展开目录" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <a class="book-brand" href="../index.html">C 语言书</a>
+    <div class="search-wrap">
+      <input type="search" id="search-input" aria-label="搜索课程内容" placeholder="搜索知识点、代码…" autocomplete="off" aria-controls="search-results" />
+      <div id="search-results" class="search-results" hidden></div>
+    </div>
+    <button type="button" class="icon-btn" id="btn-theme" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+  </header>
+  <div class="book-shell">
+    <aside class="book-sidebar" id="sidebar">
+      <div class="side-progress" id="side-progress">0% · 0/0 章</div>
+      <p class="storage-indicator" id="storage-status" role="status">正在检查本地存储…</p>
+      <a class="storage-link" href="../index.html#learning-data">进度备份与恢复</a>
+      <nav class="side-nav">
+<div class="side-label">全书</div>
+<a class="side-link" href="../index.html">学习首页</a>
+<a class="side-link" href="../appendix-mcu.html">单片机实践</a>
+<a class="side-link" href="../review.html">错题复习</a>
+<div class="side-label">模块一 · 入门基础</div>
+<a class="side-link ch-link" data-lesson="l01" href="../chapters/01-l01.html">
+            <span class="dot"></span><span class="num">01</span>
+            <span class="t">C 是什么，程序怎么跑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l02" href="../chapters/02-l02.html">
+            <span class="dot"></span><span class="num">02</span>
+            <span class="t">变量与数据类型</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l03" href="../chapters/03-l03.html">
+            <span class="dot"></span><span class="num">03</span>
+            <span class="t">常量与 #define</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l04" href="../chapters/04-l04.html">
+            <span class="dot"></span><span class="num">04</span>
+            <span class="t">运算符：算术、比较、逻辑</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l05" href="../chapters/05-l05.html">
+            <span class="dot"></span><span class="num">05</span>
+            <span class="t">位运算入门（能读懂就行）</span>
+          </a>
+<div class="side-label">模块二 · 流程与数据</div>
+<a class="side-link ch-link" data-lesson="l06" href="../chapters/06-l06.html">
+            <span class="dot"></span><span class="num">06</span>
+            <span class="t">if / else 分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l07" href="../chapters/07-l07.html">
+            <span class="dot"></span><span class="num">07</span>
+            <span class="t">switch 多分支</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l08" href="../chapters/08-l08.html">
+            <span class="dot"></span><span class="num">08</span>
+            <span class="t">循环：for / while</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l09" href="../chapters/09-l09.html">
+            <span class="dot"></span><span class="num">09</span>
+            <span class="t">数组</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l10" href="../chapters/10-l10.html">
+            <span class="dot"></span><span class="num">10</span>
+            <span class="t">函数</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l11" href="../chapters/11-l11.html">
+            <span class="dot"></span><span class="num">11</span>
+            <span class="t">字符串基础</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l12" href="../chapters/12-l12.html">
+            <span class="dot"></span><span class="num">12</span>
+            <span class="t">模块二小项目：成绩统计</span>
+          </a>
+<div class="side-label">模块三 · 进阶与实战</div>
+<a class="side-link ch-link" data-lesson="l13" href="../chapters/13-l13.html">
+            <span class="dot"></span><span class="num">13</span>
+            <span class="t">指针入门</span>
+          </a>
+<a class="side-link ch-link active" data-lesson="l14" href="../chapters/14-l14.html">
+            <span class="dot"></span><span class="num">14</span>
+            <span class="t">结构体与 typedef</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l15" href="../chapters/15-l15.html">
+            <span class="dot"></span><span class="num">15</span>
+            <span class="t">预处理与多文件组织</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l16" href="../chapters/16-l16.html">
+            <span class="dot"></span><span class="num">16</span>
+            <span class="t">综合项目：简易通讯录</span>
+          </a>
+<a class="side-link ch-link" data-lesson="l17" href="../chapters/17-l17.html">
+            <span class="dot"></span><span class="num">17</span>
+            <span class="t">可选延伸：C 用在单片机上时</span>
+          </a>
+<div class="side-label">附录</div>
+<a class="side-link" href="../appendix-examples.html">例题库</a>
+<a class="side-link" href="../appendix-pitfalls.html">易错库</a>
+<a class="side-link" href="../appendix-glossary.html">术语表</a>
+<a class="side-link" href="../appendix-cheatsheet.html">速查表</a>
+<a class="side-link" href="../appendix-tools.html">工具箱</a>
+</nav>
+    </aside>
+    <div class="backdrop" id="backdrop" hidden></div>
+    <main class="book-main" id="main" tabindex="-1">
+      <article class="chapter">
+
+      <div class="crumb">模块三 · 进阶与实战 / 第 14 课</div>
+      <h1>14 · 结构体与 typedef</h1>
+      <div class="meta-row">
+        <span class="tag">进阶</span>
+        <span class="tag">35 分钟</span>
+        <a class="tag accent" href="#pass">跳到过关题</a>
+      </div>
+      <div class="goal-box"><div class="box-title">学习目标</div><ul><li>会定义结构体并访问成员</li><li>会用 typedef 起短名</li><li>能建模「学生 / 点」这类对象</li></ul></div>
+      <div class="on-page-toc"><span>本章</span><a href="#sec-0">把相关数据捆在一起</a> <a href="#sec-1">typedef 起短名</a> <a href="#sec-2">结构体数组</a> <a href="#sec-3">结构体当参数</a> <a href="#sec-4">小例子：学生成绩表</a></div>
+
+      <h2 id="sec-0">把相关数据捆在一起</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+<span class="tok-k">struct</span> Student
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">20</span>];
+    <span class="tok-k">int</span> age;
+    <span class="tok-k">float</span> score;
+};
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    <span class="tok-k">struct</span> Student s;
+    strcpy(s.name, <span class="tok-s">&quot;Li&quot;</span>);
+    s.age = <span class="tok-n">18</span>;
+    s.score = <span class="tok-n">91.5f</span>;
+
+    printf(<span class="tok-s">&quot;%s %d %.1f\n&quot;</span>, s.name, s.age, s.score);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-1">typedef 起短名</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">typedef</span> <span class="tok-k">struct</span>
+{
+    <span class="tok-k">int</span> x;
+    <span class="tok-k">int</span> y;
+} Point;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    Point p;
+    p.x = <span class="tok-n">3</span>;
+    p.y = <span class="tok-n">4</span>;
+    printf(<span class="tok-s">&quot;(%d,%d)\n&quot;</span>, p.x, p.y);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-2">结构体数组</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code>Point pts[<span class="tok-n">3</span>];
+pts[<span class="tok-n">0</span>].x = <span class="tok-n">1</span>; pts[<span class="tok-n">0</span>].y = <span class="tok-n">2</span>;
+<span class="tok-c">/* 用循环批量处理即可 */</span></code></pre>
+</div>
+
+      <h2 id="sec-3">结构体当参数</h2>
+      <div class="prose"><p>可以把整个结构体传给函数（按值拷贝）。成员很多时也可传指针（更高效）：</p></div>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">typedef</span> <span class="tok-k">struct</span>
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">20</span>];
+    <span class="tok-k">int</span> age;
+} Person;
+
+<span class="tok-k">void</span> print_person(Person p)
+{
+    printf(<span class="tok-s">&quot;%s, %d 岁\n&quot;</span>, p.name, p.age);
+}
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    Person a = {<span class="tok-s">&quot;Amy&quot;</span>, <span class="tok-n">20</span>};  <span class="tok-c">/* 按顺序初始化 */</span>
+    print_person(a);
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+      <h2 id="sec-4">小例子：学生成绩表</h2>
+      <div class="code-wrap">
+  <button type="button" class="copy-btn" data-copy>复制</button>
+  <pre class="code"><code><span class="tok-k">#include</span> &lt;stdio.h&gt;
+
+<span class="tok-k">typedef</span> <span class="tok-k">struct</span>
+{
+    <span class="tok-k">char</span> name[<span class="tok-n">20</span>];
+    <span class="tok-k">int</span> score;
+} Stu;
+
+<span class="tok-k">int</span> main(<span class="tok-k">void</span>)
+{
+    Stu a[<span class="tok-n">3</span>] = {
+        {<span class="tok-s">&quot;Ann&quot;</span>, <span class="tok-n">90</span>},
+        {<span class="tok-s">&quot;Bob&quot;</span>, <span class="tok-n">75</span>},
+        {<span class="tok-s">&quot;Cid&quot;</span>, <span class="tok-n">88</span>}
+    };
+    <span class="tok-k">int</span> i;
+
+    <span class="tok-k">for</span> (i = <span class="tok-n">0</span>; i &lt; <span class="tok-n">3</span>; i++)
+    {
+        printf(<span class="tok-s">&quot;%s %d\n&quot;</span>, a[i].name, a[i].score);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+</div>
+
+
+      <section class="pass-zone" id="pass">
+        <div class="pass-head"><h2>本课过关</h2><span class="pass-badge">必做</span></div>
+
+        <div class="quiz" data-quiz data-quiz-id="l14" data-answer="0">
+          <p class="quiz-q">访问结构体成员用什么符号？</p>
+          <div class="quiz-opts"><button type="button" class="quiz-opt" data-opt="0"><strong>A.</strong> .</button><button type="button" class="quiz-opt" data-opt="1"><strong>B.</strong> -&gt;</button><button type="button" class="quiz-opt" data-opt="2"><strong>C.</strong> ::</button><button type="button" class="quiz-opt" data-opt="3"><strong>D.</strong> #</button></div>
+          <div class="quiz-fb" data-fb role="status"></div>
+          <div class="quiz-explain" data-explain hidden><strong>逐步解析</strong><p>结构体变量本身是一块「打包内存」，访问成员用点号：s.name、s.age，把整体拆出某一格。若手里是结构体指针 p（p = &amp;s），不能写 p.name（p 不是结构体，是指针），要写 p-&gt;name，它等价于 (*p).name。初学先熟点号；等你写「函数里修改外部结构体」时再大量用箭头。:: 是 C++ 作用域符，# 是预处理，都不是成员访问。</p></div>
+          <button type="button" class="btn quiz-retry" hidden>再做一次</button>
+        </div>
+        <div class="hw">
+          <div class="hw-title">必做作业</div>
+          <ol class="hw-list"><li>定义 Book：书名、页数、价格，并赋值打印。</li><li>用 typedef 定义 Time {时,分,秒}。</li><li>什么时候该用结构体而不是三个独立变量？</li><li>定义 3 个学生的数组，打印分数最高者姓名。</li></ol>
+          <details class="hw-sol">
+            <summary>先自己写完，再点开看解答</summary>
+            <div class="sol prose">
+          <p><strong>1：Book</strong></p>
+          <div class="code-wrap"><pre class="code"><code>typedef struct {
+    char title[40];
+    int pages;
+    double price;
+} Book;
+
+Book b;
+strcpy(b.title, "C Primer");
+b.pages = 700;
+b.price = 88.5;</code></pre></div>
+          <p><strong>2：Time</strong> <code>typedef struct { int h, m, s; } Time;</code></p>
+          <p><strong>3：何时用结构体</strong>：当多个字段描述同一对象，且经常一起传参/存储时。若永远只是三个无关的独立量，不必强行打包。</p>
+          <p><strong>4：最高分学生</strong>：遍历数组，维护 max 与 idx，最后打印 stu[idx].name。</p>
+        </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="link-box"><div class="box-title">学完去哪</div><p>下一课：预处理与多文件，代码开始像工程。</p></div>
+      <div class="chapter-footer">
+        <button type="button" class="mark-done" data-lesson="l14">标记为已完成</button>
+        <div class="pager">
+          <a class="pager-link" href="../chapters/13-l13.html"><span class="dir">上一章</span><span class="title">13 · 指针入门</span></a>
+          <a class="pager-link next" href="../chapters/15-l15.html"><span class="dir">下一章</span><span class="title">15 · 预处理与多文件组织</span></a>
+        </div>
+      </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/search-index.js"></script>
+  <script src="../js/study-state.js"></script>
+  <script src="../book.js"></script>
+  <script src="../js/learning.js"></script>
+  <script src="../js/backup.js"></script>
+</body>
+</html>
